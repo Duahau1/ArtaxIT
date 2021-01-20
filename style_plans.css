@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+}
+
+#container {
+    width: 70%;
+    height: 800px;
+    background-color: rgba(0, 0, 128, 0.2);
+    border-radius: 30px;
+    margin: 100px auto;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(0, 0, 128, 0.75);
+    position: relative;
+    top: 70px;
+    font-size: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: rgb(0, 0, 128);
+    position: relative;
+    top: 90px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    color: rgb(0, 0, 0, 0.75);
+    position: relative;
+    top: 80px;
+    font-size: 18px;
+}
+
+#billing-btn {
+    display: flex;
+    position: relative;
+    top: 110px;
+    justify-content: center;
+}
+
+#billing-btn-1 {
+    border: none;
+    background-color: white;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 30px 0 0 30px;
+}
+
+#billing-btn-2 {
+    border: none;
+    background-color: rgba(0, 0, 128, 0.6);
+    color: white;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    padding-top: 15px;
+    border-radius: 0 30px 30px 0;
+}
+
+#plans-container {
+    position: relative;
+    top: 175px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.plan {
+    width: 25%;
+    height: 300px;
+    background-color: rgba(0, 0, 128, 0.25);
+    text-align: center;
+    color: rgb(0, 0, 128);
+    padding-top: 30px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+.select-btn {
+    display: block;
+    margin: 175px auto;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: coral;
+    color: rgb(255, 255, 255, 0.75);
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+}
