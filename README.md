@@ -25,7 +25,7 @@ Example
 <td>:x:</td>
 <td>
 <pre>
-json
+```json
   {
     "first_name":"test5",
     "last_name":"test5",
@@ -35,6 +35,7 @@ json
     "password":"secured",
     "email":"myemail@gmail.com"
 }
+```
 </pre>
 </td>
 
@@ -47,11 +48,12 @@ json
 <td>:x:</td>
 <td>
 <pre>
-json
+```json
 {
     "username":"test8",
     "password":"secured"
 }
+```
 </pre>
 </td>
 
