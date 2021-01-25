@@ -1,32 +1,39 @@
 <table>
+
 <tr>
 <th>
-Status
+HTTP Method
+</th>
+ <th>
+Endpoint
+</th>
+ <th>
+Request Body
 </th>
 <th>
-Response
+Request Param
+</th>
+<th>
+Example
 </th>
 </tr>
-
 <tr>
 
-<td>
-<pre>
-<br/><br/><br/>200<br/><br/><br/><br/><br/>400<br/>
-</pre>
-</td>
-
+<td>POST</td>
+<td>/sign_up</td>
+<td>:heavy_check_mark:</td>
+<td>:x:</td>
 <td>
 <pre>
 json
   {
-    "id": 10,
-    "username": "alanpartridge",
-    "email": "alan@alan.com",
-    "password_hash": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.CPCWCZsyqqa8./whhfzBZydX7yvahHS",
-    "password_salt": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.",
-    "created_at": "2015-02-14T20:45:26.433Z",
-    "updated_at": "2015-02-14T20:45:26.540Z"
+    "first_name":"test5",
+    "last_name":"test5",
+    "phone_number":2087418523,
+    "company_name":"myCompany",
+    "username":"test8",
+    "password":"secured",
+    "email":"myemail@gmail.com"
 }
 </pre>
 </td>
