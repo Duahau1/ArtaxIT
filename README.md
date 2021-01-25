@@ -1,3 +1,13 @@
+<h1>ArtaxIt</h1>
+<h2>Endpoint</h2>
+
+<code>https://mcval.herokuapp.com/</code>
+
+Content-type should all be JSON
+<hr>
+
+<h2>Available Route </h2>
+
 <table>
 
 <tr>
@@ -5,7 +15,7 @@
 HTTP Method
 </th>
  <th>
-Endpoint
+Route
 </th>
  <th>
 Request Body
