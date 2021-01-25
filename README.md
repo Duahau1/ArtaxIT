@@ -24,7 +24,6 @@ Example
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
 
 ```json
   {
@@ -37,7 +36,6 @@ Example
     "email":"myemail@gmail.com"
 }
 ```
-</pre>
 </td>
 
 </tr>
@@ -48,15 +46,13 @@ Example
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
-
+ 
 ```json
 {
     "username":"test8",
     "password":"secured"
 }
 ```
-</pre>
 </td>
 
 </tr>
