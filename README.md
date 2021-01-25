@@ -26,6 +26,9 @@ Request Param
 <th>
 Example
 </th>
+ <th>
+Response
+</th>
 </tr>
 <tr>
 
@@ -47,7 +50,16 @@ Example
 }
 ```
 </td>
-
+<td>
+ 
+ ```json
+ {
+   'status': 'good',
+   'message': 'User is created'
+}
+ ```
+ </td>
+ 
 </tr>
 <tr>
 
@@ -64,7 +76,17 @@ Example
 }
 ```
 </td>
-
+<td>
+ 
+ ```json
+ {
+    "status": "good",
+    "username": "test8",
+    "company_name": "myCompany",
+    "message": "Logged in"
+}
+```
+</td>
 </tr>
 <tr>
 
@@ -77,6 +99,14 @@ Example
 null
 </pre>
 </td>
+<td>
 
+```json
+{
+    "status": "good",
+    "message": "Logged out"
+}
+```
+ </td>
 </tr>
 </table>
