@@ -54,8 +54,8 @@ Response
  
  ```json
  {
-   'status': 'good',
-   'message': 'User is created'
+   "status": "good",
+   "message": User is created"
 }
  ```
  </td>
