@@ -30,8 +30,8 @@ Example
 Response
 </th>
 </tr>
-<tr>
 
+<tr>
 <td>POST</td>
 <td>/sign_up</td>
 <td>:heavy_check_mark:</td>
@@ -62,7 +62,6 @@ Response
  
 </tr>
 <tr>
-
 <td>POST</td>
 <td>/log_in</td>
 <td>:heavy_check_mark:</td>
@@ -89,7 +88,6 @@ Response
 </td>
 </tr>
 <tr>
-
 <td>GET</td>
 <td>/log_out</td>
 <td>:x:</td>
