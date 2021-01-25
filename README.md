@@ -1,21 +1,35 @@
-<h1>ArtaxIt API</h1>
-<h2> Endpoint </h2>
-https://mcval.herokuapp.com/
+<table>
+<tr>
+<th>
+Status
+</th>
+<th>
+Response
+</th>
+</tr>
 
-Content-type should all be JSON
-<hr>
-<h2>Route </h2>
+<tr>
 
-| HTTP Type | Request_Body | Request_Param | Example |
-| --- | --- | --- | --- |
-| POST | YES | NO | ```json
-{
-    "first_name":"test5",
-    "last_name":"test5",
-    "phone_number":2087418523,
-    "company_name":"myCompany",
-    "username":"test8",
-    "password":"secured",
-    "email":"myemail@gmail.com"
+<td>
+<pre>
+<br/><br/><br/>200<br/><br/><br/><br/><br/>400<br/>
+</pre>
+</td>
+
+<td>
+<pre>
+json
+  {
+    "id": 10,
+    "username": "alanpartridge",
+    "email": "alan@alan.com",
+    "password_hash": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.CPCWCZsyqqa8./whhfzBZydX7yvahHS",
+    "password_salt": "$2a$10$uhUIUmVWVnrBWx9rrDWhS.",
+    "created_at": "2015-02-14T20:45:26.433Z",
+    "updated_at": "2015-02-14T20:45:26.540Z"
 }
-``` |
+</pre>
+</td>
+
+</tr>
+</table>
