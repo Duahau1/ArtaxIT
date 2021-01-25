@@ -26,7 +26,7 @@ Example
 <td>
 
 ```json
-  {
+{
     "first_name":"test5",
     "last_name":"test5",
     "phone_number":2087418523,
@@ -49,8 +49,8 @@ Example
  
 ```json
 {
-    "username":"test8",
-    "password":"secured"
+   "username":"test8",
+   "password":"secured"
 }
 ```
 </td>
