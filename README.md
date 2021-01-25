@@ -39,4 +39,34 @@ json
 </td>
 
 </tr>
+<tr>
+
+<td>POST</td>
+<td>/log_in</td>
+<td>:heavy_check_mark:</td>
+<td>:x:</td>
+<td>
+<pre>
+json
+  {
+   "username":"test8",
+   "password":"secured"
+}
+</pre>
+</td>
+
+</tr>
+<tr>
+
+<td>GET</td>
+<td>/log_out</td>
+<td>:x:</td>
+<td>:x:</td>
+<td>
+<pre>
+null
+</pre>
+</td>
+
+</tr>
 </table>
