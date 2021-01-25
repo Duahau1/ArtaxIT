@@ -1,11 +1,14 @@
-The endpoint is https://mcval.herokuapp.com/
+<h1>ArtaxIt API</h1>
+<h2> Endpoint </h2>
+https://mcval.herokuapp.com/
+
 Content-type should all be JSON
-Route:
+<hr>
+<h2>Route </h2>
 
-POST request: /sign_up  
-Things that are needed to send in request body
-
-Example:
+| HTTP Type | Request_Body | Request_Param | Example |
+| --- | --- | --- | --- |
+| POST | YES | NO | ```json
 {
     "first_name":"test5",
     "last_name":"test5",
@@ -15,16 +18,4 @@ Example:
     "password":"secured",
     "email":"myemail@gmail.com"
 }
-
-POST request: /log_in 
-Things that are needed to send in the request body
-Example:
-{
-    "username":"test8",
-    "password":"secured"
-}
-GET request: /log_out
-
-GET request: /dashboard
-Will be developed as soon as we have a paypal business account to manage subscription
-
+``` |
