@@ -48,9 +48,9 @@ json
 <td>
 <pre>
 json
-  {
-   "username":"test8",
-   "password":"secured"
+{
+    "username":"test8",
+    "password":"secured"
 }
 </pre>
 </td>
