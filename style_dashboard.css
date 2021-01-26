@@ -34,8 +34,12 @@ body {
     text-decoration: none;
   }
 
+  #mobile-menu {
+    display: none;
+  }
+
   #link1 {
-      margin-top: 400px;
+      margin-top: 250px;
   }
    
   .sidebar a.active {
@@ -46,6 +50,10 @@ body {
   .sidebar a:hover:not(.active) {
     background-color: #333;
     color: white;
+  }
+
+  #menu-btn {
+    display: none;
   }
   
   div.content {
@@ -92,5 +100,26 @@ body {
         width: 75%;
         text-align: center;
         margin: 10px 20px;
+        display: none;
     }
+    #menu-btn {
+      display: block;
+      width: 400px;
+      background-color: rgba(0, 0, 128, 0.25);
+      border: none;
+      border-radius: 5px;
+      padding: 16px;
+      margin: 10px auto 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    #menu-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    a.show-links {
+      display: initial;
+      /* visibility: hidden; */
+    }
+    
   }
