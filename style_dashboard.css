@@ -17,6 +17,10 @@ body {
     overflow: auto;
   }
 
+  #hero-img-tablet {
+    display: none;
+  }
+
   #hero-img {
       display: block;
       width: 300px;
@@ -69,6 +73,11 @@ body {
         display: flex;
         justify-content: space-evenly;
     }
+    #hero-img-tablet {
+      display: block;
+      width: 60%;
+      margin: 30px auto 20px;
+    }
     #hero-img {
         display: none;
     }
@@ -91,6 +100,9 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+    }
+    #hero-img-tablet {
+      display: none;
     }
     #hero-img {
         display: initial;
