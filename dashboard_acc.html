@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style_dashboard_acc.css"> 
+    <title>ArtaxIT - My Dashboard</title>
+
+</head>
+
+
+<body>
+
+    <img id="hero-img-tablet" src="Images/logoartaxit-horizontal.png" alt="hero-img">
+    <div class="sidebar">
+        <img id="hero-img" src="Images/logoartaxit-horizontal.png" alt="hero-img">
+        <a class="menu-link active" id="link1" href="#home">Overview</a>
+        <a class="menu-link" href="#account">My Account</a>
+        <a class="menu-link" href="#news">Services</a>
+        <a class="menu-link" href="#contact">Support</a>
+        <button id="menu-btn" onclick="openMenu()">+</button>
+    </div>
+      
+    <div class="content">
+        <h2>Overview</h2>
+        
+        <h3>Account overview</h3>
+        <p>You have 2 notifications.</p>
+        <p>Support ticket status</p>
+    </div>
+
+    <script>
+
+        var menuOpen = false;
+
+        function openMenu() {
+            var menuLinkNode = document.getElementsByClassName("menu-link");
+            var menuButtonNode = document.getElementById("menu-btn")
+            if (!menuOpen) {
+                var i = 0; 
+    		    for (i = 0; i < menuLinkNode.length; i++) {
+    			    menuLinkNode[i].classList.add("show-links");
+                }
+                menuButtonNode.innerHTML = "-";
+                menuOpen = true;
+            } else {
+                var i = 0; 
+    		    for (i = 0; i < menuLinkNode.length; i++) {
+    			    menuLinkNode[i].classList.remove("show-links");
+                }
+                menuButtonNode.innerHTML = "+";
+                menuOpen = false;
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

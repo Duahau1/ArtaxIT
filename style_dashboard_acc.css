@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    background-color: rgba(0, 0, 128, 0.25);
+  }
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    background-color: rgba(0, 0, 128, 0.2);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+
+  #hero-img-tablet {
+    display: none;
+  }
+
+  #hero-img {
+      display: block;
+      width: 300px;
+      margin: 50px auto 0;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: white;
+    text-align: center;
+    margin: 30px 15px;
+    background-color: rgba(0, 0, 128, 0.5);
+    border-radius: 10px;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+  #mobile-menu {
+    display: none;
+  }
+
+  #link1 {
+      margin-top: 250px;
+  }
+   
+  .sidebar a.active {
+    background-color: #000080;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #333;
+    color: white;
+  }
+
+  #menu-btn {
+    display: none;
+  }
+  
+  div.content {
+    margin-left: 400px;
+    padding: 1px 16px;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #hero-img-tablet {
+      display: block;
+      width: 60%;
+      margin: 30px auto 20px;
+    }
+    #hero-img {
+        display: none;
+    }
+    .sidebar a {
+        background-color: transparent;
+        width: 20%;
+        margin: 10px;
+    }
+    #link1 {
+        margin-top: 10px;
+    }
+    div.content {
+        margin-left: 0;
+    }
+  }
+  
+  @media screen and (max-width: 550px) {
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #hero-img-tablet {
+      display: none;
+    }
+    #hero-img {
+        display: initial;
+        margin-bottom: 30px;
+    }
+    .sidebar a {
+        width: 75%;
+        text-align: center;
+        margin: 10px 20px;
+        display: none;
+    }
+    #menu-btn {
+      display: block;
+      width: 400px;
+      background-color: rgba(0, 0, 128, 0.25);
+      border: none;
+      border-radius: 5px;
+      padding: 16px;
+      margin: 10px auto 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    #menu-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    a.show-links {
+      display: initial;
+      /* visibility: hidden; */
+    }
+    
+  }
