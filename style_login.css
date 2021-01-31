@@ -27,6 +27,9 @@ body {
     width: 75%;
     margin: auto;
 }
+#hero-img-alt {
+    display: none;
+}
 
 h1 {
     font-size: 30px;
@@ -101,4 +104,89 @@ a#forgot-password-link:hover {
     position: absolute;
     left: 50%;
     top: 650px;
+}
+
+@media screen and (max-width: 1600px) {
+    #hero-container {
+        width: 350px;
+    }
+    .input {
+        width: 300px;
+    }
+    #submit-btn {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #container {
+        text-align: center;
+        padding-top: 30px;
+    }
+    #hero-container {
+        display: none;
+    }
+    #hero-img-alt {
+        display: block;
+        width: 400px;
+        margin: 0px auto;
+    }
+    h1 {
+        position: relative;
+        display: block;
+        margin: 20px auto;
+        width: 150px;
+        left: 0;
+        top: 20px;
+    }
+    .input-text {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+    }
+    #username-text {
+        top: 100px;
+    }
+    #password-text {
+        top: 80px;
+    }
+    .input {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+    }
+    #username-input {
+        top: 95px;
+        width: 70%;
+    }
+    #password-input {
+        top: 75px;
+        width: 70%;
+    }
+    #submit-btn {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+        top: 150px;
+        width: 70%;
+    }
+    #forgot-password-link {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+        top: -20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #hero-img-alt {
+        width: 300px;
+    }
+    #container {
+        width: 90%;
+    }
 }
