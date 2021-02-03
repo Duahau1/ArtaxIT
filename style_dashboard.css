@@ -59,6 +59,14 @@ body {
 #menu-btn {
     display: none;
 }
+
+#logout-btn {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+}
+#logout-btn:hover {
+    background-color: #333;
+}
   
 div.content {
     margin-left: 400px;
@@ -216,6 +224,14 @@ li {
     }
     #link1 {
         margin-top: 10px;
+    }
+    #logout-btn {
+        background-color: transparent;
+        color: #222;
+    }
+    #logout-btn:hover {
+        background-color: rgba(255, 0, 0, 0.5);
+        color: white;
     }
     div.content {
         margin-left: 0;
