@@ -27,6 +27,9 @@ body {
     width: 75%;
     margin: auto;
 }
+#hero-img-alt {
+    display: none;
+}
 
 h1 {
     font-size: 30px;
@@ -102,4 +105,96 @@ h1 {
     position: absolute;
     left: 50%;
     top: 780px;
+}
+
+@media screen and (max-width: 1600px) {
+    #hero-container {
+        width: 350px;
+    }
+    .input {
+        width: 300px;
+    }
+    #submit-btn {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #container {
+        text-align: center;
+        padding-top: 30px;
+    }
+    #hero-container {
+        display: none;
+    }
+    #hero-img-alt {
+        display: block;
+        width: 400px;
+        margin: 0px auto;
+    }
+    h1 {
+        position: relative;
+        display: block;
+        margin: 20px auto;
+        width: 100%;
+        left: 0;
+        top: 20px;
+    }
+    .input-text {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+    }
+    #email-text {
+        top: 100px;
+    }
+    #username-text {
+        top: 80px;
+    }
+    #password-text {
+        top: 60px;
+    }
+    .input {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+    }
+    #email-input {
+        top: 95px;
+        width: 70%;
+    }    
+    #username-input {
+        top: 75px;
+        width: 70%;
+    }
+    #password-input {
+        top: 55px;
+        width: 70%;
+    }
+    #password-criteria {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+        top: 10px;
+    }
+    #submit-btn {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        left: 0;
+        top: 100px;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #hero-img-alt {
+        width: 300px;
+    }
+    #container {
+        width: 90%;
+    }
 }
