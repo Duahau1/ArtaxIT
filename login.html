@@ -18,10 +18,10 @@
         <div id="hero-container">
             <img id="hero-img" src="Images/logoartaxit-cuadro.png" alt="hero-img">
         </div>
-        <h1>Log In</h1>
-        <form action="">
+        <h1 id="prompt">Log In</h1>
+        <form action="https://mcval.herokuapp.com/log_in" method="POST" >
             <label for="username-input" class="input-text" id="username-text">Username</label>
-            <input type="text" name="username" class="input" id="username-input"><br><br>
+            <input type="text" placeholder="username" name="username" class="input" id="username-input"><br><br>
             <label for="password-input" class="input-text" id="password-text">Password</label>
             <input type="text" name="password" class="input" id="password-input"><br><br>
             <input type="submit" value="Log in" id="submit-btn">
@@ -29,7 +29,8 @@
             <a href="create_account.html" id="create-acc-btn">Create Account</a>
         </form>
     </div>
-
+    <!--script fecth--> 
+    <script src="/js/login.js" ></script>
 </body>
 
 </html>
