@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         fetch(formInput.action,{
              method:formInput.method,
+             credentials: 'include',
              headers:{
                 'Content-Type': 'application/json'
              },
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(){
          .then(data=>{
              if(data.status==="good"){
                  /*var user_token = data. how can pass a Json Token to the next url?*/
-                 window.location.href= "dashboard.html"
+                 window.location.href = "dashboard.html"
 
              }
              else{

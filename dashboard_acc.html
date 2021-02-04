@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style_dashboard.css"> 
     <title>ArtaxIT - My Dashboard</title>
+<!-- apperance script -->
+<script src="/js/dacc.js"></script>
 
 </head>
 
@@ -29,13 +31,13 @@
             <div class="overview-item">
                 <h4>My Info</h4>
                 <p class="sub-header">First Name:</p>
-                    <p class="info">John</p>
+                    <p class="info" name ="firstN" >John</p>
                 <p class="sub-header">Last Name:</p>
-                    <p class="info">Smith</p>
+                    <p class="info" name="lastN">Smith</p>
                 <p class="sub-header">Phone:</p>
-                    <p class="info">888-888-8888</p>
+                    <p class="info" name="phone" >888-888-8888</p>
                 <p class="sub-header">Company:</p>
-                    <p class="info">ArtaxIT</p>
+                    <p class="info" name="company">ArtaxIT</p>
                 <button class="info info-btn">Edit Info</button>
             </div>
             <div class="overview-item">
@@ -64,31 +66,7 @@
 
     </div>
 
-    <script>
-
-        var menuOpen = false;
-
-        function openMenu() {
-            var menuLinkNode = document.getElementsByClassName("menu-link");
-            var menuButtonNode = document.getElementById("menu-btn")
-            if (!menuOpen) {
-                var i = 0; 
-    		    for (i = 0; i < menuLinkNode.length; i++) {
-    			    menuLinkNode[i].classList.add("show-links");
-                }
-                menuButtonNode.innerHTML = "-";
-                menuOpen = true;
-            } else {
-                var i = 0; 
-    		    for (i = 0; i < menuLinkNode.length; i++) {
-    			    menuLinkNode[i].classList.remove("show-links");
-                }
-                menuButtonNode.innerHTML = "+";
-                menuOpen = false;
-            }
-        }
-
-    </script>
+   
 
 
 
