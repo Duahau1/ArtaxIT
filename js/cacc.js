@@ -1,5 +1,14 @@
+
 document.addEventListener("DOMContentLoaded", function(){
     // Handler when the DOM is fully loaded
+
+    // grap the values from LocalStorage
+
+    const fname = localStorage.getItem('fname');
+    const lname = localStorage.getItem('lname-input');
+    const phone = localStorage.getItem('phone-input');
+    const company = localStorage.getItem('company');
+
 
     document.addEventListener('submit',e=>{
         e.preventDefault();
