@@ -94,15 +94,19 @@ h1 {
     top: 665px;
 }
 
-#submit-btn {
+#create-acc-btn {
     width: 400px;
     height: 50px;
+    text-align: center;
     border-radius: 10px;
     background-color:rgb(0, 0, 128);
     color: white;
     font-size: 25px;
     border: none;
     position: absolute;
+    vertical-align: middle;
+    line-height: 50px;
+    text-decoration: none;
     left: 50%;
     top: 780px;
 }
@@ -114,7 +118,7 @@ h1 {
     .input {
         width: 300px;
     }
-    #submit-btn {
+    #create-acc-btn {
         width: 300px;
     }
 }
@@ -180,7 +184,7 @@ h1 {
         left: 0;
         top: 20px;
     }
-    #submit-btn {
+    #create-acc-btn {
         position: relative;
         display: block;
         margin: 0 auto;

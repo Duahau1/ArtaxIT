@@ -14,11 +14,12 @@
 <body>
     
     <div id="container">
+        <img id="hero-img-alt" src="Images/logoartaxit-horizontal.png" alt="hero-img">
         <div id="hero-container">
             <img id="hero-img" src="Images/logoartaxit-cuadro.png" alt="hero-img">
         </div>
-        <h1>Your information</h1>
-        <form action="">
+        <h1>Your Information</h1>
+        <form action="create_account.html">
 
             <label for="fname" class="input-text" id="fname-text">First name</label>
                 <input type="text" name="fname" class="input" id="fname-input"><br><br>
@@ -32,11 +33,28 @@
             <label for="company" class="input-text" id="company-text">Company name</label>
                 <input type="text" name="company" class="input" id="company-input"><br><br>
 
-            <p id="password-criteria">Billing will not start until the end of your free trial. <br>You may cancel your subscription at any time.</p>
-            <input type="submit" value="PayPal" id="paypal-btn">
-            <input type="submit" value="Create account" id="create-acc-btn">
+            <!-- <p id="password-criteria">Billing will not start until the end of your free trial. <br>You may cancel your subscription at any time.</p>
+            <input type="submit" value="PayPal" id="paypal-btn"> -->
+            
+            <input type="submit" onclick="store()" value="Continue" id="continue-btn">
           </form>
     </div>
+
+    <script>
+
+        var fname = document.getElementById("fname-input");
+        var lname = document.getElementById("lname-input");
+        var phone = document.getElementById("phone-input");
+        var company = document.getElementById("company-input");
+    
+        function store() {
+            localStorage.setItem("fname", fname.value);
+            localStorage.setItem("lname", lname.value);
+            localStorage.setItem("phone", phone.value);
+            localStorage.setItem("company", company.value);
+        }
+
+    </script>
 
 </body>
 

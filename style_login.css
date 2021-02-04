@@ -93,7 +93,7 @@ a#forgot-password-link:hover {
     text-decoration: underline;
 }
 
-#submit-btn, #create-acc-btn{
+#submit-btn, #create-acc-link{
     width: 400px;
     height: 50px;
     border-radius: 10px;
@@ -108,7 +108,7 @@ a#forgot-password-link:hover {
     left: 50%;
     top: 680px;
 }
-#create-acc-btn {
+#create-acc-link {
     background-color:rgb(0, 0, 128, 0.7);
     text-align: center;
     vertical-align: middle;
@@ -125,7 +125,7 @@ a#forgot-password-link:hover {
     .input {
         width: 330px;
     }
-    #submit-btn, #create-acc-btn {
+    #submit-btn, #create-acc-link {
         width: 330px;
     }
 }
@@ -185,7 +185,7 @@ a#forgot-password-link:hover {
         top: 150px;
         width: 70%;
     }
-    #create-acc-btn {
+    #create-acc-link {
         position: relative;
         display: block;
         margin: 0 auto;

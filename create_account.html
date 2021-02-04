@@ -19,17 +19,42 @@
             <img id="hero-img" src="Images/logoartaxit-cuadro.png" alt="hero-img">
         </div>
         <h1>Create your account</h1>
-        <form action="">
+        <form action="https://mcval.herokuapp.com/sign_up" method="POST">
+
             <label for="email-input" class="input-text" id="email-text">Email</label>
             <input type="text" name="email" class="input" id="email-input"><br><br>
+
             <label for="username-input" class="input-text" id="username-text">Username</label>
             <input type="text" name="username" class="input" id="username-input"><br><br>
+
             <label for="password-input" class="input-text" id="password-text">Password</label>
             <input type="text" name="password" class="input" id="password-input"><br><br>
             <p id="password-criteria">8 character minimun</p>
-            <input type="submit" value="Continue" id="submit-btn">
+
+            <!-- <input type="submit" value="Continue" id="submit-btn"> -->
+            <!-- <a href="login.html" id="create-acc-btn">Create Account</a> -->
+            <input type="submit" onclick="createAcc()" value="Create Account" id="create-acc-btn">
+
           </form>
     </div>
+
+    <script>
+
+        var email = document.getElementById("email-input");
+        var username = document.getElementById("username-input");
+        var password = document.getElementById("password-input");
+
+        function createAcc() {
+            var fname = localStorage.getItem("fname");
+            var lname = localStorage.getItem("lname");
+            var phone = localStorage.getItem("phone");
+            var company = localStorage.getItem("company");
+        }
+
+    </script>
+
+    <!--script fecth--> 
+    <script src="/js/cacc.js" ></script>
 
 </body>
 
