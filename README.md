@@ -7,7 +7,7 @@
 [![](https://avatars.githubusercontent.com/u/77358045?s=50)](https://github.com/juanluisja1)
 
 ## Endpoint
-Front end : <code> https://duahau1.github.io/ArtaxIT/</code>
+Front end : <code> https://artax-it.vercel.app/</code>
 
 Back end: <code>https://mcval.herokuapp.com/</code>
 
