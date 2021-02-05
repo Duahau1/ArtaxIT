@@ -25,14 +25,16 @@ document.addEventListener("DOMContentLoaded", function(){
              // company 6
              "company_name":company,
             // username 1
-            "username":inputField[0].value,
+            "username":inputField[1].value,
             // password 2
-            "password":inputField[1].value,
+            "password":inputField[2].value,
             //email 
-            "email":inputField[2].value
+            "email":inputField[0].value
            
         }
-        fetch(formInput.action,{
+
+        
+       fetch(formInput.action,{
              method:formInput.method,
              headers:{
                 'Content-Type': 'application/json'
@@ -42,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function(){
          .then(result=>result.json())
          .then(data=>{
              if(data.status==="good"){
-                 // user is redirected to login
+                 //user is redirected to login
+                 localStorage.clear();
                  alert("Please log in into your account!")
                  window.location.href= "login.html"
              }
@@ -57,3 +60,4 @@ document.addEventListener("DOMContentLoaded", function(){
     })
 
   });
+  */
