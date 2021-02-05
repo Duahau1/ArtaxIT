@@ -21,6 +21,14 @@ function openMenu() {
     }
 }
 
+// log_out 
+function logOut(){  
+
+    localStorage.clear();
+    window.location.href ="artaxit.com";
+
+}
+
 // populating dashboard with data
 
 // Handler when the DOM is fully loaded
@@ -29,24 +37,27 @@ document.addEventListener("DOMContentLoaded", function(){
     
     fetch("https://mcval.herokuapp.com/dashboard",{
         //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
-        headers:{
-           'authorization': 'bearer '+ localStorage.getItem(token)
-        }
+       /* headers:{
+           'authorization': 'bearer '+ localStorage.getItem('token')
+        }*/
     })
     .then(result=>result.json())
     .then(data=>{
-        if(!data.status){                 
+        if(data.trouble_ticket.status === "good"){                 
             
             //last item of the array data.trouble_ticket.ticket
-            data.trouble_ticket.ticket
+            var last = data.trouble_ticket.ticket.length;
+            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
+            if (!data.trouble_ticket.ticket[last].status > 0)
+            { document.getElementById("tstatus").innerHTML = 'Open'; }
+            else{ document.getElementById("tstatus").innerHTML = 'Close'; }            
             
-            data.subcription
-           
+            //populate subcription info    
+            document.getElementById("splan").innerHTML = data.subcription.planName;
         }
         else{
-            formInput.reset();
-            document.getElementById("prompt").innerHTML="Incorrect username or password";
-            document.getElementById("prompt").style.color="red";
+            
+            console.log(data.status);
         }
     })
     .catch(err=>console.log(err));
