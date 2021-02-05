@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     else {
         localStorage.clear();
-        window.location.href = "../index.html";
+        window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
     }
 });
 
