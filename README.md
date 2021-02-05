@@ -7,10 +7,12 @@
 [![](https://avatars.githubusercontent.com/u/77358045?s=50)](https://github.com/juanluisja1)
 
 ## Endpoint
+Front end : <code> https://duahau1.github.io/ArtaxIT/</code>
 
-<code>https://mcval.herokuapp.com/</code>
+Back end: <code>https://mcval.herokuapp.com/</code>
 
 Content-type should all be JSON
+
 
 ## Available Route 
 
