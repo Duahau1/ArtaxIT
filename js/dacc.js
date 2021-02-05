@@ -25,7 +25,7 @@ function openMenu() {
 function logOut() {
 
     localStorage.clear();
-    window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
+    window.location.href = "../index.html";
 
 }
 function removeList() {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }).then(res=>res.json()).then(data=>{
                 if(data.status=="good"){
-                    window.location.href="https://duahau1.github.io/ArtaxIT/dashboard.html";
+                    window.location.href="../dashboard.html";
                 }
                 else{
                     console.log("data payment did not go through")
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     else {
         localStorage.clear();
-        window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
+        window.location.href = "../index.html";
     }
 });
 
@@ -139,7 +139,7 @@ function getData(){
                                     }
                                 }).then(res => res.json()).then(data => {
                                     if (data.status == "good") {
-                                        window.location.href="https://duahau1.github.io/ArtaxIT/dashboard.html";
+                                        window.location.href="../dashboard.html";
                                     }
                                     else{
                                         console.log(data.message);
@@ -154,7 +154,7 @@ function getData(){
                         if (data.status == "err" && data.message == "Please log in") {
                             //Just in case the token expire
                             localStorage.clear();
-                            window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
+                            window.location.href = "../index.html";
                         }
                     }
                 })

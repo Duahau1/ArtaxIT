@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
          .then(data=>{
              if(data.status==="good"){                 
                 localStorage.setItem("token", 'Bearer '+ data.token);
-                window.location.href = "https://duahau1.github.io/ArtaxIT/dashboard.html";
+                window.location.href = "../dashboard.html";
              }
              else{
                  formInput.reset();
