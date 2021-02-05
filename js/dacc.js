@@ -37,13 +37,14 @@ document.addEventListener("DOMContentLoaded", function(){
     
     fetch("https://mcval.herokuapp.com/dashboard",{
         //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
-       /* headers:{
+        headers:{
+          
            'authorization': 'bearer '+ localStorage.getItem('token')
-        }*/
+        }
     })
     .then(result=>result.json())
     .then(data=>{
-        if(data.trouble_ticket.status === "good"){                 
+        if(data.subcription.status === "good"){                 
             
             //last item of the array data.trouble_ticket.ticket
             var last = data.trouble_ticket.ticket.length;
