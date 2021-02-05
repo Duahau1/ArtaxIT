@@ -46,8 +46,7 @@ document.addEventListener("DOMContentLoaded", function(){
              if(data.status==="good"){
                  //user is redirected to login
                  localStorage.clear();
-                 alert("Please log in into your account!")
-                 window.location.href= "../login.html"
+                 window.location.href= "../index.html";
              }
              else{
                  formInput.reset();
