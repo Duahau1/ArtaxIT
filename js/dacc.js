@@ -1,4 +1,4 @@
-
+// apparence 
 var menuOpen = false;
 
 function openMenu() {
@@ -20,3 +20,39 @@ function openMenu() {
         menuOpen = false;
     }
 }
+
+// populating dashboard with data
+
+// Handler when the DOM is fully loaded
+
+document.addEventListener("DOMContentLoaded", function(){
+    
+    fetch("https://mcval.herokuapp.com/dashboard",{
+        //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
+        headers:{
+           'authorization': 'bearer '+ localStorage.getItem(token)
+        }
+    })
+    .then(result=>result.json())
+    .then(data=>{
+        if(!data.status){                 
+            
+            //last item of the array data.trouble_ticket.ticket
+            data.trouble_ticket.ticket
+            
+            data.subcription
+           
+        }
+        else{
+            formInput.reset();
+            document.getElementById("prompt").innerHTML="Incorrect username or password";
+            document.getElementById("prompt").style.color="red";
+        }
+    })
+    .catch(err=>console.log(err));
+   
+});
+
+
+    
+

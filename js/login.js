@@ -1,3 +1,4 @@
+/*jlja2 123456 */
 document.addEventListener("DOMContentLoaded", function(){
     // Handler when the DOM is fully loaded
 
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         fetch(formInput.action,{
              method:formInput.method,
-             credentials: 'include',
+             //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
              headers:{
                 'Content-Type': 'application/json'
              },
@@ -19,10 +20,9 @@ document.addEventListener("DOMContentLoaded", function(){
          })
          .then(result=>result.json())
          .then(data=>{
-             if(data.status==="good"){
-                 /*var user_token = data. how can pass a Json Token to the next url?*/
-                 window.location.href = "dashboard.html"
-
+             if(data.status==="good"){                 
+                localStorage.setItem("token", 'Bearer '+ data.token);
+                 window.location.href = "dashboard.html";
              }
              else{
                  formInput.reset();
