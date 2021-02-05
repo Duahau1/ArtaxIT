@@ -154,7 +154,7 @@ function getData(){
                         if (data.status == "err" && data.message == "Please log in") {
                             //Just in case the token expire
                             localStorage.clear();
-                            window.location.href = "../index.html";
+                            window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
                         }
                     }
                 })

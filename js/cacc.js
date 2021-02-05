@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(){
                  //user is redirected to login
                  localStorage.clear();
                  alert("Please log in into your account!")
-                 window.location.href= "login.html"
+                 window.location.href= "https://duahau1.github.io/ArtaxIT/login.html"
              }
              else{
                  formInput.reset();
