@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
              }
              else{
                  formInput.reset();
-                 document.getElementById("prompt").innerHTML="Something went wrong, please try again";
+                 document.getElementById("prompt").innerHTML=data.message;
                  document.getElementById("prompt").style.color="red";
              }
          })
