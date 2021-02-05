@@ -25,7 +25,7 @@ function openMenu() {
 function logOut() {
 
     localStorage.clear();
-    window.location.href = "../index.html";
+    window.location.href = "https://duahau1.github.io/ArtaxIT/index.html";
 
 }
 function removeList() {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }).then(res=>res.json()).then(data=>{
                 if(data.status=="good"){
-                    window.location.href="../dashboard.html";
+                    window.location.href="https://duahau1.github.io/ArtaxIT/dashboard.html";
                 }
                 else{
                     console.log("data payment did not go through")
@@ -139,7 +139,7 @@ function getData(){
                                     }
                                 }).then(res => res.json()).then(data => {
                                     if (data.status == "good") {
-                                        window.location.href="../dashboard.html";
+                                        window.location.href="https://duahau1.github.io/ArtaxIT/dashboard.html";
                                     }
                                     else{
                                         console.log(data.message);

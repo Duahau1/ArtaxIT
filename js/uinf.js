@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.setItem("company", company.value);
 
         //directs to provide more info and create the account
-            window.location.href = "createaccount.html"
+            window.location.href = "https://duahau1.github.io/ArtaxIT/createaccount.html"
 
     }
 
