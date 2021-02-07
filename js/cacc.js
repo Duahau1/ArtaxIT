@@ -46,17 +46,16 @@ document.addEventListener("DOMContentLoaded", function(){
              if(data.status==="good"){
                  //user is redirected to login
                  localStorage.clear();
-                 alert("Please log in into your account!")
-                 window.location.href= "login.html"
+                 window.location.href= "../index.html";
              }
              else{
                  formInput.reset();
-                 document.getElementById("prompt").innerHTML="Something went wrong, please try again";
+                 document.getElementById("prompt").innerHTML=data.message;
                  document.getElementById("prompt").style.color="red";
              }
          })
          .catch(err=>console.log(err));
         
     })
+});
 
-  });

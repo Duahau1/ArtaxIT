@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.setItem("company", company.value);
 
         //directs to provide more info and create the account
-            window.location.href = "createaccount.html"
+            window.location.href = "../createaccount.html"
 
     }
 
