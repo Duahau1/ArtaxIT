@@ -174,6 +174,19 @@ li {
     margin-top: 2px;
 }
 
+.edit-info-input {
+    color: green;
+    height: 17px;
+    background-color: white;
+    border: none;
+    padding-left: 10px;
+}
+ #save-btn {
+ }
+ .hide {
+    display: none;
+ }
+
 .footer {
     width: 100%;
     text-align: center;

@@ -31,14 +31,19 @@
             <div class="overview-item">
                 <h4>My Info</h4>
                 <p class="sub-header">First Name:</p>
-                    <p class="info" name ="firstN" >John</p>
+                    <p class="info" name ="firstN" id="fname-info">John</p>
+                    <input type="text" class="info edit-info-input hide" id="fname-input" name="fname">
                 <p class="sub-header">Last Name:</p>
-                    <p class="info" name="lastN">Smith</p>
+                    <p class="info" name="lastN" id="lname-info">Smith</p>
+                    <input type="text" class="info edit-info-input hide" id="lname-input" name="lname">
                 <p class="sub-header">Phone:</p>
-                    <p class="info" name="phone" >888-888-8888</p>
-                <p class="sub-header">Company:</p>
-                    <p class="info" name="company">ArtaxIT</p>
-                <button class="info info-btn">Edit Info</button>
+                    <p class="info" name="phone" id="phone-info">888-888-8888</p>
+                    <input type="text" class="info edit-info-input hide" id="phone-input" name="phone">
+                <p class="sub-header"">Company:</p>
+                    <p class="info" name="company" id="company-info">ArtaxIT</p>
+                    <input type="text" class="info edit-info-input hide" id="company-input" name="company">
+                <button class="info info-btn" id="edit-btn" onclick="edit_info()">Edit Info</button>
+                <button class="info info-btn hide" id="save-btn" onclick="save_form()">Save Info</button>
             </div>
             <div class="overview-item">
                 <h4>Subscription</h4>
@@ -66,8 +71,64 @@
 
     </div>
 
-   
 
+    <script>
+
+        var menuOpen = false;
+
+        function openMenu() {
+            var menuLinkNode = document.getElementsByClassName("menu-link");
+            var menuButtonNode = document.getElementById("menu-btn")
+            if (!menuOpen) {
+                var i = 0; 
+                for (i = 0; i < menuLinkNode.length; i++) {
+                    menuLinkNode[i].classList.add("show-links");
+                }
+                menuButtonNode.innerHTML = "-";
+                menuOpen = true;
+            } else {
+                var i = 0; 
+                for (i = 0; i < menuLinkNode.length; i++) {
+                    menuLinkNode[i].classList.remove("show-links");
+                }
+                menuButtonNode.innerHTML = "+";
+                menuOpen = false;
+            }
+        }
+
+        var fname_info_node = document.getElementById("fname-info");
+        var fname_input_node = document.getElementById('fname-input');
+
+        var lname_info_node = document.getElementById("lname-info");
+        var lname_input_node = document.getElementById('lname-input');
+
+        var phone_info_node = document.getElementById("phone-info");
+        var phone_input_node = document.getElementById('phone-input');
+
+        var company_info_node = document.getElementById("company-info");
+        var company_input_node = document.getElementById('company-input');
+
+        var edit_btn_node = document.getElementById("edit-btn");
+        var save_btn_node = document.getElementById("save-btn");
+
+       function edit_info() {
+           fname_input_node.classList.remove("hide");
+           fname_info_node.classList.add("hide");
+
+           lname_input_node.classList.remove("hide");
+           lname_info_node.classList.add("hide");
+
+           phone_input_node.classList.remove("hide");
+           phone_info_node.classList.add("hide");
+
+           company_input_node.classList.remove("hide");
+           company_info_node.classList.add("hide");
+
+           save_btn_node.classList.remove("hide");
+           edit_btn_node.classList.add("hide");
+       }
+
+    </script>
 
 
 </body>
