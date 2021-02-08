@@ -136,6 +136,7 @@ h4 {
     border: none;
     cursor: pointer;
     width: 80%;
+    text-decoration: none;
 }
 .info-btn:hover {
     background-color: rgba(14, 43, 92, 0.8);
@@ -185,7 +186,7 @@ li {
     text-decoration: none;
 }
 
- .hide {
+.hide {
     display: none;
  }
 
