@@ -2,13 +2,13 @@
 /* CSS Document */
 
 body {
-	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	font-family: 'Rubik', sans-serif;
 }
 
 #container {
     width: 95%;
     height: 1200px;
-    background-color: rgba(0, 0, 128, 0.2);
+    background-color: rgba(14, 43, 92, 0.2);
     border-radius: 30px;
     margin: 100px auto;
     padding: 50px 10px 0;
@@ -22,7 +22,7 @@ body {
 
 h1 {
     text-align: center;
-    color: rgb(0, 0, 128, 0.75);
+    color: rgb(14, 43, 92, 0.75);
     position: relative;
     top: 20px;
     font-size: 30px;
@@ -30,7 +30,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: rgb(0, 0, 128);
+    color: rgb(14, 43, 92);
     position: relative;
     top: 50px;
     font-size: 25px;
@@ -55,9 +55,9 @@ h3 {
 .plan {
     width: 350px;
     height: 450px;
-    background-color: rgba(0, 0, 128, 0.25);
+    background-color: rgba(14, 43, 92, 0.2);
     text-align: left;
-    color: rgb(0, 0, 128);
+    color: rgb(14, 43, 92);
     padding: 30px;
     font-size: 25px;
     border-radius: 10px;
@@ -66,12 +66,12 @@ h3 {
 .select-btn {
     display: block;
     margin: 20px auto;
-    border: 1px solid white;
+    border: none;
     border-radius: 5px;
     background-color: coral;
     color: rgb(255, 255, 255, 0.75);
     font-size: 20px;
-    width: 80%;
+    width: 100%;
     height: 50px;
 }
 
@@ -79,6 +79,8 @@ h3 {
     height: 50px;
     font-size: 16px;
     padding: 0;
+    color: rgba(252, 85, 70);
+    font-weight: bold;
 }
 
 .price-num {
@@ -88,6 +90,7 @@ h3 {
     font-size: 16px;
     position: relative;
     bottom: 15px;
+    color: rgba(14, 43, 92, 0.6);
 }
 
 .list-label {
@@ -98,13 +101,15 @@ ul {
     list-style: none; /* Remove list bullets */
     padding: 0;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 li {
     text-align: left;
     font-size: 14px;
     position: relative;
     top: -20px;
+    color: rgba(14, 43, 92, 0.6);
+    margin-bottom: 5px;
 }
 
 @media screen and (max-width: 1400px) {

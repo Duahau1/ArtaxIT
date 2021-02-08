@@ -3,15 +3,15 @@
 
 body {
     margin: 0;
-    font-family: "Lato", sans-serif;
-    background-color: rgba(0, 0, 128, 0.25);
+    font-family: 'Rubik', sans-serif;
+    background-color: rgba(14, 43, 92, 0.25);
 }
   
 .sidebar {
     margin: 0;
     padding: 0;
     width: 400px;
-    background-color: rgba(0, 0, 128, 0.2);
+    background-color: rgba(14, 43, 92, 0.2);
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -32,7 +32,7 @@ body {
     color: white;
     text-align: right;
     margin: 30px 40px 30px 0;
-    background-color: rgba(0, 0, 128, 0.5);
+    background-color: rgba(14, 43, 92, 0.5);
     border-radius: 0 10px 10px 0;
     padding: 16px 100px 16px 16px;
     text-decoration: none;
@@ -47,7 +47,7 @@ body {
 }
    
 .sidebar a.active {
-    background-color: #000080;
+    background-color: rgba(14, 43, 92);
     color: white;
 }
   
@@ -78,7 +78,7 @@ h3 {
     text-align: center;
     margin: 50px auto 0px;
     font-size: 30px;
-    color: rgb(0,0, 128);
+    color: rgb(14, 43, 92);
 }
   
 #overview-container {
@@ -119,7 +119,7 @@ h4 {
     padding: 5px 30px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: rgba(0, 0, 128, 0.1);
+    background-color: rgba(14, 43, 92, 0.1);
 }
 
 .info-img {
@@ -129,7 +129,7 @@ h4 {
 .info-btn {
     font-size: 16px;
     text-align: center;
-    background-color: rgba(0, 0, 128, 0.5);
+    background-color: rgba(14, 43, 92, 0.5);
     padding: 10px 5px;
     margin: 100px auto 0;
     color: white;
@@ -138,7 +138,7 @@ h4 {
     width: 80%;
 }
 .info-btn:hover {
-    background-color: rgba(0, 0, 128, 0.8);
+    background-color: rgba(14, 43, 92, 0.8);
 }
 
 .info-desc {
@@ -167,7 +167,7 @@ ul {
     padding: 5px 30px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: rgba(0, 0, 128, 0.1);
+    background-color: rgba(14, 43, 92, 0.1);
     list-style-type: none;
 }
 li {
@@ -175,14 +175,16 @@ li {
 }
 
 .edit-info-input {
-    color: green;
     height: 17px;
     background-color: white;
     border: none;
     padding-left: 10px;
 }
- #save-btn {
- }
+
+#live-chat-btn {
+    text-decoration: none;
+}
+
  .hide {
     display: none;
  }
@@ -275,7 +277,7 @@ li {
     #menu-btn {
         display: block;
         width: 400px;
-        background-color: rgba(0, 0, 128, 0.25);
+        background-color: rgba(14, 43, 92, 0.25);
         border: none;
         border-radius: 5px;
         padding: 16px;
