@@ -100,9 +100,9 @@ Response
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -121,9 +121,9 @@ null
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -166,9 +166,9 @@ null
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -188,9 +188,9 @@ null
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -210,9 +210,9 @@ null
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -231,17 +231,15 @@ null
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 
 ```json
 {
     "issue":"error in test5",
-    "description":"something is wrong with the index file",
-    "priority":1,
-    "status":1
+    "description":"something is wrong with the index file"
 }
 ```
-</pre>
+
 </td>
 <td>
 
@@ -259,9 +257,9 @@ null
 <td>:x:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 null
-</pre>
+
 </td>
 <td>
 
@@ -295,7 +293,7 @@ null
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 
 ```json
 {
@@ -305,7 +303,7 @@ null
  "company_name": "artaxIt"
 }
 ```
-</pre>
+
 </td>
 <td>
 
@@ -327,7 +325,7 @@ null
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 
 ```json
 {
@@ -335,7 +333,7 @@ null
  "username": "secured"
 }
 ```
-</pre>
+
 </td>
 <td>
 
@@ -353,7 +351,7 @@ null
 <td>:heavy_check_mark:</td>
 <td>:heavy_check_mark:</td>
 <td>
-<pre>
+
 Body:
 
 ```json
@@ -364,7 +362,7 @@ Body:
 Query:
 ?au=dsdsfsdfsdjhfskadjfhsdkfhsdfhsdfhksdfhsdlfsdfjkdshfsdhfsk
 (append this after the request url)
-</pre>
+
 </td>
 <td>
 
@@ -383,17 +381,15 @@ Query:
 <td>:heavy_check_mark:</td>
 <td>:x:</td>
 <td>
-<pre>
+
 Form data
 {
     "issue":"error in test5",
     "description":"something is wrong with the index file",
-    "priority":1,
-    "status":1,
     "Image":file that user attaches
 }
 
-</pre>
+
 </td>
 <td>
 
@@ -401,6 +397,30 @@ Form data
 {
      "status": "good",
      "message": "Ticket create successfully"
+}
+```
+ </td>
+</tr>
+
+<tr>
+<td>GET</td>
+<td>/user/information</td>
+<td>:x:</td>
+<td>:x:</td>
+<td>
+
+null
+
+</td>
+<td>
+ 
+```json
+{
+    "status": "good",
+    "first_name": "test5",
+    "last_name": "test5",
+    "phone_number": "2087418523",
+    "company_name": "myCompany"
 }
 ```
  </td>
