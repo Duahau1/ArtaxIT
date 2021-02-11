@@ -1,26 +1,3 @@
-// apparence 
-var menuOpen = false;
-
-function openMenu() {
-    var menuLinkNode = document.getElementsByClassName("menu-link");
-    var menuButtonNode = document.getElementById("menu-btn")
-    if (!menuOpen) {
-        var i = 0;
-        for (i = 0; i < menuLinkNode.length; i++) {
-            menuLinkNode[i].classList.add("show-links");
-        }
-        menuButtonNode.innerHTML = "-";
-        menuOpen = true;
-    } else {
-        var i = 0;
-        for (i = 0; i < menuLinkNode.length; i++) {
-            menuLinkNode[i].classList.remove("show-links");
-        }
-        menuButtonNode.innerHTML = "+";
-        menuOpen = false;
-    }
-}
-
 // log_out 
 function logOut() {
 
@@ -51,10 +28,37 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-document.getElementById("purchase").addEventListener('click', () => {
+// careBasic 
+document.getElementById("careBasic").addEventListener('click', () => {
     if (document.getElementById("splan").innerHTML == "none") {
         //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
         fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
+            headers: {
+
+                'authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json()).then(res => window.location.href = res.url);
+    }
+})
+
+// carePlus
+document.getElementById("carePlus").addEventListener('click', () => {
+    if (document.getElementById("splan").innerHTML == "none") {
+        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2"
+        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2", {
+            headers: {
+
+                'authorization': localStorage.getItem('token')
+            }
+        }).then(res => res.json()).then(res => window.location.href = res.url);
+    }
+})
+
+// carePro
+document.getElementById("carePro").addEventListener('click', () => {
+    if (document.getElementById("splan").innerHTML == "none") {
+        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3"
+        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3", {
             headers: {
 
                 'authorization': localStorage.getItem('token')
