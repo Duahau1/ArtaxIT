@@ -28,18 +28,7 @@ function logOut() {
     window.location.href = "../index.html";
 
 }
-function removeList() {
-    const removeElements = (elms) => elms.forEach(el => el.remove());
-    removeElements(document.querySelectorAll(".item_benefit"));
-}
-function getParameterByName(name, url = window.location.href) {
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+
 // populating dashboard with data
 
 // Handler when the DOM is fully loaded
@@ -51,49 +40,24 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-document.getElementById("purchase").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
-            headers: {
-
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
-
 document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem('token')) {
-        if (getParameterByName("token") == null) {
+  
+        if (localStorage.getItem('token')) {
             getData();
         }
         else{
-            let token = getParameterByName("token");
-            let ba_token = getParameterByName("ba_token");
-            fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
-                headers: {
 
-                    'authorization': localStorage.getItem('token')
-                }
-            }).then(res=>res.json()).then(data=>{
-                if(data.status=="good"){
-                    window.location.href="../dashboard.html";
-                }
-                else{
-                    console.log("data payment did not go through")
-                }
-            })
+            localStorage.clear();
+            window.location.href = "../index.html";
         }
-    }
-    else {
-        localStorage.clear();
-        window.location.href = "../index.html";
-    }
+    
+   
 });
 
+//populating dashboard_acc
+
 function getData(){
-    fetch("https://mcval.herokuapp.com/dashboard", {
+    fetch("https://mcval.herokuapp.com/user/information", {
                 //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
                 headers: {
 
@@ -102,54 +66,41 @@ function getData(){
             })
                 .then(result => result.json())
                 .then(data => {
-                    if (data.hasOwnProperty("trouble_ticket")) {
-                        //last item of the array data.trouble_ticket.ticket
+                    if (data.status === "good") {
+                        
+                        //user 
 
-                        var last = data.trouble_ticket.ticket.length - 1;
-                        if (last >= 0) {
-                            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
-                            document.getElementById("tdescription").innerHTML = data.trouble_ticket.ticket[last].description;
-                            if (!data.trouble_ticket.ticket[last].status > 0)
-                                document.getElementById("tstatus").innerHTML = 'Open';
-                            else
-                                document.getElementById("tstatus").innerHTML = 'Close';
-                        }
-                    }
-                    if (data.hasOwnProperty("subscription")) {
-                        //populate subcription info    
-                        document.getElementById("splan").innerHTML = data.subscription.planName;
-                        for (let i = 0; i < careBasic_benefits.length && data.subscription.planName != "none"; i++) {
-                            let child = document.createElement('li');
-                            child.innerHTML = careBasic_benefits[i];
-                            child.dataset.name = careBasic_benefits[i];
-                            child.setAttribute("class", "item_benefit");
-                            document.getElementById("plan_benefits").appendChild(child);
-                        }
-                        if (data.subscription.planName != "none") {
-                            let child = document.createElement('button');
-                            child.innerHTML = "Cancel Subscription";
-                            child.setAttribute("class", "info info-btn");
-                            let sub_panel = document.querySelectorAll(".overview-item")[1]
-                            document.getElementById("purchase").style.visibility = "hidden";
-                            sub_panel.appendChild(child);
-                            child.addEventListener('click', () => {
-                                fetch("https://mcval.herokuapp.com/dashboard/subscription/cancel", {
-                                    headers: {
-                                        'authorization': localStorage.getItem('token')
-                                    }
-                                }).then(res => res.json()).then(data => {
-                                    if (data.status == "good") {
-                                        window.location.href="../dashboard.html";
-                                    }
-                                    else{
-                                        console.log(data.message);
-                                    }
-                                })
+                        //My info section
+                       
+                            //populating view
+
+                            console.log(data)
+
+                            document.getElementById("fname-info").innerHTML = data.first_name;
+                            document.getElementById("lname-info").innerHTML = data.last_name;
+                            document.getElementById("phone-info").innerHTML = data.phone_number;
+                            document.getElementById("company-info").innerHTML = data.company_name;
+                        
+                         
+                         //Subscription section
+                            fetch("https://mcval.herokuapp.com/dashboard", {
+                                headers: {
+                                    'authorization': localStorage.getItem('token')
+                                }
+                            }).then(res => res.json()).then(data => {
+                                if (data.subscription.status == "good") {
+                                    
+                                //populating  view
+                                document.getElementById("c-plan").innerHTML = data.subscription.planName;
+                                document.getElementById("n-billing").innerHTML = data.subscription.next_billing_day;
+
+                                }
+                                else{
+                                    console.log(data.message);
+                                }
                             })
-
                         }
-
-                    }
+                    
                     else {
                         if (data.status == "err" && data.message == "Please log in") {
                             //Just in case the token expire
