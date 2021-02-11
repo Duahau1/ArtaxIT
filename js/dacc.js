@@ -28,45 +28,6 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-// careBasic 
-document.getElementById("careBasic").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
-            headers: {
-
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
-
-// carePlus
-document.getElementById("carePlus").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2", {
-            headers: {
-
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
-
-// carePro
-document.getElementById("carePro").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3", {
-            headers: {
-
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
-
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
         if (getParameterByName("token") == null) {
@@ -82,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }).then(res=>res.json()).then(data=>{
                 if(data.status=="good"){
-                    window.location.href="../dashboard.html";
+                    window.location.href="../dashboard_acc.html";
                 }
                 else{
                     console.log("data payment did not go through")
@@ -164,5 +125,3 @@ function getData(){
                 })
                 .catch(err => console.log(err));
 }
-
-
