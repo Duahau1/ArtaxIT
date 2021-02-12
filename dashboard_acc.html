@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">  
     <title>ArtaxIT - My Dashboard</title>
     <!-- apperance script -->
-    <script src="/js/dacc.js"></script>
+    <script src="js/dacc.js"></script>
 
 </head>
 
@@ -33,16 +33,20 @@
             <div class="overview-item">
                 <h4>My Info</h4>
                 <p class="sub-header">First Name:</p>
-                    <p class="info" name ="firstN" id="fname-info">John</p>
+                    <!-- first name from database: -->
+                    <p class="info" name ="firstN" id="fname-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="fname-input" name="fname">
                 <p class="sub-header">Last Name:</p>
-                    <p class="info" name="lastN" id="lname-info">Smith</p>
+                    <!-- last name from database: -->
+                    <p class="info" name="lastN" id="lname-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="lname-input" name="lname">
                 <p class="sub-header">Phone:</p>
+                    <!-- phone from database: -->
                     <p class="info" name="phone" id="phone-info">888-888-8888</p>
                     <input type="text" class="info edit-info-input hide" id="phone-input" name="phone">
                 <p class="sub-header"">Company:</p>
-                    <p class="info" name="company" id="company-info">ArtaxIT</p>
+                    <!-- company name from database: -->
+                    <p class="info" name="company" id="company-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="company-input" name="company">
                 <button class="info info-btn" id="edit-btn" onclick="edit_info()">Edit Info</button>
                 <button class="info info-btn hide" id="save-btn" onclick="save_form()">Save Info</button>
@@ -50,18 +54,22 @@
             <div class="overview-item">
                 <h4>Subscription</h4>
                 <p class="sub-header">Current plan:</p>
-                    <p class="info">careBasic</p>
+                    <!-- current plan from database: -->
+                    <p class="info">none</p>
                 <p class="sub-header">Billing:</p>
-                    <p class="info">$17.99/mo</p>
+                    <!-- billing interval ($23.99/mo or $199/year) from database: -->
+                    <p class="info">-</p>
                 <p class="sub-header">Next bill date:</p>
-                    <p class="info">2/4/2021</p>
+                    <!-- next bill date (2/4/2020) from database: -->
+                    <p class="info">-</p>
                 <p class="sub-header">Benefits:</p>
                 <ul>
-                    <li>Basic Troubleshooting</li>
-                    <li>Windows/iMac</li>
-                    <li>Remote Desktop</li>
-                    <li>Installation of AntiVirus</li>
-                    <li>Virus, Malware & Spyware Removal</li>
+                    <!-- change innerHTML via js - 3 lists -->
+                    <li>li 1</li>
+                    <li>li 2</li>
+                    <li>li 3</li>
+                    <li>li 4</li>
+                    <li>li 5</li>
                 </ul>
                 <a href="select_package.html" id="purchase" class="info info-btn">Purchase Subscription</a>
                 <a id="purchase" class="info info-btn hide">Cancel Subscription</a>
