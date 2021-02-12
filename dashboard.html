@@ -43,15 +43,21 @@
             <div class="overview-item">
                 <h4>Subscription</h4>
                 <p class="sub-header">Current plan:</p>
+                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
                     <p id="splan" class="info">None</p>
                 <p class="sub-header">Benefits:</p>
                 <ul id="plan_benefits">
                     <!-- change innerHTML via js - 3 lists -->
-                    <li>li 1</li>
-                    <li>li 2</li>
-                    <li>li 3</li>
-                    <li>li 4</li>
-                    <li>li 5</li>
+                    <li id="li1">-</li>
+                    <li id="li2">-</li>
+                    <li id="li3">-</li>
+                    <li id="li4">-</li>
+                    <li id="li5">-</li>
+                    <li id="li6">-</li>
+                    <li id="li7">-</li>
+                    <li id="li8">-</li>
+                    <li id="li9">-</li>
+                    <li id="li10">-</li>
                 </ul>
             </div>
         </div>
@@ -86,9 +92,71 @@
             }
         }
 
+        var splanNode =  document.getElementById("splan");
+        var li1Node = document.getElementById("li1");
+        var li2Node = document.getElementById("li2");
+        var li3Node = document.getElementById("li3");
+        var li4Node = document.getElementById("li4");
+        var li5Node = document.getElementById("li5");
+        var li6Node = document.getElementById("li6");
+        var li7Node = document.getElementById("li7");
+        var li8Node = document.getElementById("li8");
+        var li9Node = document.getElementById("li9");
+        var li10Node = document.getElementById("li10");
+
+        switch (splanNode.innerHTML) {
+            case "careBasic":
+                li1Node.innerHTML = "Basic Troubleshooting";
+                li2Node.innerHTML = "Windows/iMac";
+                li3Node.innerHTML = "Remote Desktop";
+                li4Node.innerHTML = "Installation of Antivirus";
+                li5Node.innerHTML = "Virus, Malware & Spyware Removal";
+                li6Node.style.display = "none";
+                li7Node.style.display = "none";
+                li8Node.style.display = "none";
+                li9Node.style.display = "none";
+                li10Node.style.display = "none";
+                break;
+            case "carePlus":
+                li1Node.innerHTML = "Basic Troubleshooting";
+                li2Node.innerHTML = "Windows/iMac";
+                li3Node.innerHTML = "Remote Desktop";
+                li4Node.innerHTML = "Installation of Antivirus";
+                li5Node.innerHTML = "Virus, Malware & Spyware Removal";
+                li6Node.innerHTML = "Wireless Network troubleshooting";
+                li7Node.innerHTML = "Hardware Troubleshooting";
+                li8Node.style.display = "none";
+                li9Node.style.display = "none";
+                li10Node.style.display = "none";
+                break;
+            case "carePro":
+                li1Node.innerHTML = "Basic Troubleshooting";
+                li2Node.innerHTML = "Windows/iMac";
+                li3Node.innerHTML = "Remote Desktop";
+                li4Node.innerHTML = "Installation of Antivirus";
+                li5Node.innerHTML = "Virus, Malware & Spyware Removal";
+                li6Node.innerHTML = "Wireless Network troubleshooting";
+                li7Node.innerHTML = "Hardware Troubleshooting";
+                li8Node.innerHTML = "Email Setup & Maintenance";
+                li9Node.innerHTML = "Data Backup/Recovery";
+                li10Node.innerHTML = "Computer Repair & Maintenance";
+                break;
+            default:
+                li1Node.style.display = "none";
+                li2Node.style.display = "none";
+                li3Node.style.display = "none";
+                li4Node.style.display = "none";
+                li5Node.style.display = "none";
+                li6Node.style.display = "none";
+                li7Node.style.display = "none";
+                li8Node.style.display = "none";
+                li9Node.style.display = "none";
+                li10Node.style.display = "none";
+        }
+
     </script>
 
-    <script src="/js/dover.js"></script>
+    <!-- <script src="js/dover.js"></script> -->
 
 </body>
 
