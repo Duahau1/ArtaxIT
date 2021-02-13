@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 'Content-Type': 'application/json'
              },
              body:JSON.stringify(req),
-         })
+         }) 
          .then(result=>result.json())
          .then(data=>{
              if(data.status==="good"){                 

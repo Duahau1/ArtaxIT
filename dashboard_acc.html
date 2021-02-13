@@ -32,38 +32,46 @@
             <div class="overview-item">
                 <h4>My Info</h4>
                 <p class="sub-header">First Name:</p>
-                    <p class="info" name ="firstN" id="fname-info">John</p>
+                    <!-- first name from database: -->
+                    <p class="info" name ="firstN" id="fname-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="fname-input" name="fname">
                 <p class="sub-header">Last Name:</p>
-                    <p class="info" name="lastN" id="lname-info">Smith</p>
+                    <!-- last name from database: -->
+                    <p class="info" name="lastN" id="lname-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="lname-input" name="lname">
                 <p class="sub-header">Phone:</p>
+                    <!-- phone from database: -->
                     <p class="info" name="phone" id="phone-info">888-888-8888</p>
                     <input type="text" class="info edit-info-input hide" id="phone-input" name="phone">
-                <p class="sub-header"">Company:</p>
-                    <p class="info" name="company" id="company-info">ArtaxIT</p>
+                <p class="sub-header">Company:</p>
+                    <!-- company name from database: -->
+                    <p class="info" name="company" id="company-info">-</p>
                     <input type="text" class="info edit-info-input hide" id="company-input" name="company">
                 <button class="info info-btn" id="edit-btn" onclick="edit_info()">Edit Info</button>
-                <button class="info info-btn hide" id="save-btn" onclick="save_form()">Save Info</button>
+                <button class="info info-btn hide" id="save-btn">Save Info</button>
             </div>
             <div class="overview-item">
                 <h4>Subscription</h4>
+                <!-- current plan from database: -->
+                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
                 <p class="sub-header">Current plan:</p>
                     <p class="info" id="c-plan">careBasic</p>
+                     <!-- billing interval and next dill date($23.99/mo or $199/year on 2/4/2021) from database: -->
                 <p class="sub-header">Billing:</p>
-                    <p class="info">$17.99/mo</p>
+                    <p class="info" id="p-plan" >$17.99/mo</p>
                 <p class="sub-header" >Next bill date:</p>
                     <p class="info" id="n-billing" >2/4/2021</p>
                 <p class="sub-header">Benefits:</p>
-                <ul>
-                    <li>Basic Troubleshooting</li>
-                    <li>Windows/iMac</li>
-                    <li>Remote Desktop</li>
-                    <li>Installation of AntiVirus</li>
-                    <li>Virus, Malware & Spyware Removal</li>
+                <ul id="plan_benefits">
+                    
                 </ul>
-                <a href="select_package.html" id="purchase" class="info info-btn hide">Purchase Subscription</a>
-                <a id="purchase" class="info info-btn">Cancel Subscription</a>
+                <div id="action">
+
+                    <a href="select_package.html" id="purchase" class="info info-btn hide">Purchase Subscription</a>
+                    <a id="cancel" class="info info-btn">Cancel Subscription</a>
+
+                </div>
+                
             </div>
         </div>
 
@@ -76,8 +84,18 @@
 
     <script>
 
+        // apparence 
         var menuOpen = false;
 
+        // log_out 
+        function logOut() {
+
+            localStorage.clear();
+            window.location.href = "../index.html";
+
+        }
+
+        //managing menu
         function openMenu() {
             var menuLinkNode = document.getElementsByClassName("menu-link");
             var menuButtonNode = document.getElementById("menu-btn")
@@ -98,58 +116,53 @@
             }
         }
 
-        var fname_info_node = document.getElementById("fname-info");
-        var fname_input_node = document.getElementById('fname-input');
+                
+            //array plan's prices
 
-        var lname_info_node = document.getElementById("lname-info");
-        var lname_input_node = document.getElementById('lname-input');
+            let plan_p = [
+                "$17.99/mo", //careBasic
+                "$26.99/mo", //carePlus
+                "$34.99/mo" // carePlus
+            ]
 
-        var phone_info_node = document.getElementById("phone-info");
-        var phone_input_node = document.getElementById('phone-input');
+            //array no subscription plan
+            let suggestion_b = [
+                "Network and Hardware Troubleshooting",
+                "Windows/iMac",
+                "Remote Desktop",
+                "Virus, Malware & Spyware Removal",
+                "Data Backup/Recovery",
+                "Computer Repair & Maintenance"
+            ]
 
-        var company_info_node = document.getElementById("company-info");
-        var company_input_node = document.getElementById('company-input');
+            //array careBasic
+            let careBasic_b = [
+                "Basic Troubleshooting",
+                "Windows/iMac",
+                "Remote Desktop",
+                "Installation of AntiVirus",
+                "Virus, Malware & Spyware Removal",
+            ]
+            //array carePlus 
+            let carePlus_b = [
+                "All careBasic services",
+                "Wireless Network troubleshooting",
+                "Hardware Troubleshooting"
+            ]
 
-        var edit_btn_node = document.getElementById("edit-btn");
-        var save_btn_node = document.getElementById("save-btn");
+            //array carePlus 
+            let carePro_b = [
+                "All carePlus services",
+                "Email Setup & Maintenance",
+                "Data Backup/Recovery",
+                "Computer Repair & Maintenance"
+            ]
 
-       function edit_info() {
-           fname_input_node.classList.remove("hide");
-           fname_info_node.classList.add("hide");
-
-           lname_input_node.classList.remove("hide");
-           lname_info_node.classList.add("hide");
-
-           phone_input_node.classList.remove("hide");
-           phone_info_node.classList.add("hide");
-
-           company_input_node.classList.remove("hide");
-           company_info_node.classList.add("hide");
-
-           save_btn_node.classList.remove("hide");
-           edit_btn_node.classList.add("hide");
-       }
-
-       function save_form() {
-           fname_input_node.classList.add("hide");
-           fname_info_node.classList.remove("hide");
-
-           lname_input_node.classList.add("hide");
-           lname_info_node.classList.remove("hide");
-
-           phone_input_node.classList.add("hide");
-           phone_info_node.classList.remove("hide");
-
-           company_input_node.classList.add("hide");
-           company_info_node.classList.remove("hide");
-
-           save_btn_node.classList.add("hide");
-           edit_btn_node.classList.remove("hide");
-       }
+        
 
     </script>
 
-<script src="/js/dacc.js"></script>
+<script src="/js/dacc.js" ></script>
 </body>
 
 </html>

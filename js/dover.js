@@ -51,17 +51,7 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-document.getElementById("purchase").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
-            headers: {
 
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
 
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
