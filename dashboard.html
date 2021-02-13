@@ -31,11 +31,14 @@
             <div class="overview-item">
                 <h4>Support Ticket Status</h4>
                 <p class="sub-header">Ticket #:</p>
-                    <p id="tid" class="info">111.222.3333</p>
+                    <!-- latest ticket # from database -->
+                    <p id="tid" class="info">-</p>
                 <p class="sub-header">Status:</p>
-                    <p id="tstatus" class="info">Sent</p>
+                    <!-- status from database -->
+                    <p id="tstatus" class="info">-</p>
                 <p class="sub-header">Description:</p>
-                    <p id="tdescription" class="info info-desc">PC slow on start-up.</p>
+                    <!-- desc from database -->
+                    <p id="tdescription" class="info info-desc"></p>
             </div>
             <div class="overview-item">
                 <h4>Subscription</h4>
@@ -51,6 +54,10 @@
                 <p class="sub-header">Benefits:</p>
                 <ul id="plan_benefits">
                     
+                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
+                    
+                <ul id="plan_benefits">
+                   
                 </ul>
                                 
             </div>
@@ -130,11 +137,11 @@
 
         
 
-    </script>
+    
 
     </script>
 
-    <script src="/js/dover.js"></script>
+    <script src="js/dover.js"></script> 
 
 </body>
 
