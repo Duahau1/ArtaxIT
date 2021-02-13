@@ -28,40 +28,31 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-document.getElementById("purchase").addEventListener('click', () => {
-    if (document.getElementById("splan").innerHTML == "none") {
-        //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
-        fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
-            headers: {
 
-                'authorization': localStorage.getItem('token')
-            }
-        }).then(res => res.json()).then(res => window.location.href = res.url);
-    }
-})
 
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
-        if (getParameterByName("token") == null) {
-            getData();
-        }
-        else{
-            let token = getParameterByName("token");
-            let ba_token = getParameterByName("ba_token");
-            fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
-                headers: {
+        getData();
+        // if (getParameterByName("token") == null) {
+        //     
+        // }
+        // else{
+        //             let token = getParameterByName("token");
+        //             let ba_token = getParameterByName("ba_token");
+        //             fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
+        //                 headers: {
 
-                    'authorization': localStorage.getItem('token')
-                }
-            }).then(res=>res.json()).then(data=>{
-                if(data.status=="good"){
-                    window.location.href="../dashboard.html";
-                }
-                else{
-                    console.log("data payment did not go through")
-                }
-            })
-        }
+        //                     'authorization': localStorage.getItem('token')
+        //                 }
+        //             }).then(res=>res.json()).then(data=>{
+        //                 if(data.status=="good"){
+        //                     window.location.href="../dashboard.html";
+        //                 }
+        //                 else{
+        //                     console.log("data payment did not go through")
+        //                 }
+        //             })
+        // }
     }
     else {
         localStorage.clear();
@@ -69,73 +60,109 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+//dashboard.html view 
+
 function getData(){
+  
+    //Subscription and trouble ticket section
     fetch("https://mcval.herokuapp.com/dashboard", {
-                //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
-                headers: {
+        headers: {
+            'authorization': localStorage.getItem('token')
+        }
+    }).then(res => res.json()).then(data => {
+        if (data.subscription.status == "good") {
+            
+        //populating  view subscription overview items
+        
+        
+        if ( data.subscription.planName == 'none'){
+        
+            document.getElementById('c-plan').innerHTML = "No Active";
+            document.getElementById('p-plan').innerHTML = "$0.00";
+            document.getElementById('n-billing').innerHTML = "None";
+            
+            for (let i = 0; i < suggestion_b.length /*&& data.subscription.planName != "none"*/; i++) {
+                let child = document.createElement('li');
+                child.innerHTML = suggestion_b[i];
+                child.dataset.name = suggestion_b[i];
+                child.setAttribute("class", "item_benefit");
+                document.getElementById("plan_benefits").appendChild(child);
+            }
+                                                
+        }
 
-                    'authorization': localStorage.getItem('token')
-                }
-            })
-                .then(result => result.json())
-                .then(data => {
-                    if (data.hasOwnProperty("trouble_ticket")) {
-                        //last item of the array data.trouble_ticket.ticket
+        else if ( data.subscription.planName == 'careBasic' && data.subscription.planName != null ){
+        
+            document.getElementById('c-plan').innerHTML = data.subscription.planName;
+            document.getElementById('p-plan').innerHTML = plan_p[0];
+            document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
+            
+            for (let i = 0; i < careBasic_b.length /*&& data.subscription.planName != "none"*/; i++) {
+                let child = document.createElement('li');
+                child.innerHTML = careBasic_b[i];
+                child.dataset.name = careBasic_b[i];
+                child.setAttribute("class", "item_benefit");
+                document.getElementById("plan_benefits").appendChild(child);
+            }
+        }
 
-                        var last = data.trouble_ticket.ticket.length - 1;
-                        if (last >= 0) {
-                            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
-                            document.getElementById("tdescription").innerHTML = data.trouble_ticket.ticket[last].description;
-                            if (!data.trouble_ticket.ticket[last].status > 0)
-                                document.getElementById("tstatus").innerHTML = 'Open';
-                            else
-                                document.getElementById("tstatus").innerHTML = 'Close';
-                        }
-                    }
-                    if (data.hasOwnProperty("subscription")) {
-                        //populate subcription info    
-                        document.getElementById("splan").innerHTML = data.subscription.planName;
-                        for (let i = 0; i < careBasic_benefits.length && data.subscription.planName != "none"; i++) {
-                            let child = document.createElement('li');
-                            child.innerHTML = careBasic_benefits[i];
-                            child.dataset.name = careBasic_benefits[i];
-                            child.setAttribute("class", "item_benefit");
-                            document.getElementById("plan_benefits").appendChild(child);
-                        }
-                        if (data.subscription.planName != "none") {
-                            let child = document.createElement('button');
-                            child.innerHTML = "Cancel Subscription";
-                            child.setAttribute("class", "info info-btn");
-                            let sub_panel = document.querySelectorAll(".overview-item")[1]
-                            document.getElementById("purchase").style.visibility = "hidden";
-                            sub_panel.appendChild(child);
-                            child.addEventListener('click', () => {
-                                fetch("https://mcval.herokuapp.com/dashboard/subscription/cancel", {
-                                    headers: {
-                                        'authorization': localStorage.getItem('token')
-                                    }
-                                }).then(res => res.json()).then(data => {
-                                    if (data.status == "good") {
-                                        window.location.href="../dashboard.html";
-                                    }
-                                    else{
-                                        console.log(data.message);
-                                    }
-                                })
-                            })
+        else if (data.subscription.planName == 'carePlus' ){
 
-                        }
+            document.getElementById('c-plan').innerHTML = data.subscription.planName;
+            document.getElementById('p-plan').innerHTML = plan_p[1];
+            document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
 
-                    }
-                    else {
-                        if (data.status == "err" && data.message == "Please log in") {
-                            //Just in case the token expire
-                            localStorage.clear();
-                            window.location.href = "../index.html";
-                        }
-                    }
-                })
-                .catch(err => console.log(err));
+            for (let i = 0; i < carePlus_b.length && data.subscription.planName != "none"; i++) {
+                let child = document.createElement('li');
+                child.innerHTML = carePlus_b[i];
+                child.dataset.name = carePlus_b[i];
+                child.setAttribute("class", "item_benefit");
+                document.getElementById("plan_benefits").appendChild(child);
+            }
+        }
+
+        else if (data.subscription.planName == 'carePro' ){
+            
+            document.getElementById('c-plan').innerHTML = data.subscription.planName;
+            document.getElementById('p-plan').innerHTML = plan_p[2];
+            document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
+
+            for (let i = 0; i < carePro_b.length && data.subscription.planName != "none"; i++) {
+                let child = document.createElement('li');
+                child.innerHTML = carePro_b[i];
+                child.dataset.name = carePro_b[i];
+                child.setAttribute("class", "item_benefit");
+                document.getElementById("plan_benefits").appendChild(child);
+            }
+        }
+        
+        
+        }
+
+        if(data.trouble_ticket.ticket.length > 0 ){
+
+            var last = data.trouble_ticket.ticket.length - 1;
+            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
+            document.getElementById("tdescription").innerHTML = data.trouble_ticket.ticket[last].description;
+            if (!data.trouble_ticket.ticket[last].status > 0)
+                document.getElementById("tstatus").innerHTML = 'Open';
+            else
+                document.getElementById("tstatus").innerHTML = 'Close';
+
+        }
+        else if (!data.trouble_ticket.ticket.length > 0){
+
+            document.getElementById("tid").innerHTML = "None";
+            document.getElementById("tdescription").innerHTML = "None";
+            document.getElementById("tstatus").innerHTML = 'N/A';
+        }
+
+        else{
+            console.log(data.message);
+        }
+    })
+
 }
+
 
 

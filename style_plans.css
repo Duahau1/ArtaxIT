@@ -2,158 +2,163 @@
 /* CSS Document */
 
 body {
-	font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 #container {
-    width: 95%;
-    height: 1200px;
-    background-color: rgba(14, 43, 92, 0.2);
-    border-radius: 30px;
-    margin: 100px auto;
-    padding: 50px 10px 0;
+  width: 95%;
+  height: 1200px;
+  background-color: rgba(14, 43, 92, 0.2);
+  border-radius: 30px;
+  margin: 100px auto;
+  padding: 50px 10px 0;
 }
 
 #hero-img {
-    display: block;
-    width: 50%;
-    margin: 30px auto;
+  display: block;
+  width: 50%;
+  margin: 30px auto;
 }
 
 h1 {
-    text-align: center;
-    color: rgb(14, 43, 92, 0.75);
-    position: relative;
-    top: 20px;
-    font-size: 30px;
+  text-align: center;
+  color: rgb(14, 43, 92, 0.75);
+  position: relative;
+  top: 20px;
+  font-size: 30px;
 }
 
 h2 {
-    text-align: center;
-    color: rgb(14, 43, 92);
-    position: relative;
-    top: 50px;
-    font-size: 25px;
-    font-weight: bold;
+  text-align: center;
+  color: rgb(14, 43, 92);
+  position: relative;
+  top: 50px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 h3 {
-    text-align: center;
-    color: rgb(0, 0, 0, 0.75);
-    position: relative;
-    top: 40px;
-    font-size: 18px;
+  text-align: center;
+  color: rgb(0, 0, 0, 0.75);
+  position: relative;
+  top: 40px;
+  font-size: 18px;
 }
 
 #plans-container {
-    position: relative;
-    top: 130px;
-    display: flex;
-    justify-content: space-evenly;
+  position: relative;
+  top: 130px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .plan {
-    width: 350px;
-    height: 450px;
-    background-color: rgba(14, 43, 92, 0.2);
-    text-align: left;
-    color: rgb(14, 43, 92);
-    padding: 30px;
-    font-size: 25px;
-    border-radius: 10px;
+  width: 350px;
+  height: 450px;
+  background-color: rgba(14, 43, 92, 0.2);
+  text-align: left;
+  color: rgb(14, 43, 92);
+  padding: 30px;
+  font-size: 25px;
+  border-radius: 10px;
 }
 
 .select-btn {
-    display: block;
-    margin: 20px auto;
-    border: none;
-    border-radius: 5px;
-    background-color: coral;
-    color: rgb(255, 255, 255, 0.75);
-    font-size: 20px;
-    width: 100%;
-    height: 50px;
+  display: block;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  background-color: coral;
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 20px;
+  width: 100%;
+  height: 50px;
 }
 
 .desc {
-    height: 50px;
-    font-size: 16px;
-    padding: 0;
-    color: rgba(252, 85, 70);
-    font-weight: bold;
+  height: 50px;
+  font-size: 16px;
+  padding: 0;
+  color: rgba(252, 85, 70);
+  font-weight: bold;
 }
 
 .price-num {
-    font-size: 22px;
+  font-size: 22px;
 }
 .price-num-alt {
-    font-size: 16px;
-    position: relative;
-    bottom: 15px;
-    color: rgba(14, 43, 92, 0.6);
+  font-size: 16px;
+  position: relative;
+  bottom: 15px;
+  color: rgba(14, 43, 92, 0.6);
 }
 
 .list-label {
-    font-size: 16px;
-    text-align: left;
+  font-size: 16px;
+  text-align: left;
 }
 ul {
-    list-style: none; /* Remove list bullets */
-    padding: 0;
-    margin: 0;
-    margin-top: 30px;
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+  margin-top: 30px;
 }
 li {
-    text-align: left;
-    font-size: 14px;
-    position: relative;
-    top: -20px;
-    color: rgba(14, 43, 92, 0.6);
-    margin-bottom: 5px;
+  text-align: left;
+  font-size: 14px;
+  position: relative;
+  top: -20px;
+  color: rgba(14, 43, 92, 0.6);
+  margin-bottom: 5px;
+}
+
+.tab {
+  /* tab margin to child elements*/
+  margin-left: 40px;
 }
 
 @media screen and (max-width: 1400px) {
-    #container {
-        height: 1100px;
-    }
-    .plan {
-        width: 250px;
-    }
-    .desc {
-        height: 75px;
-    }
+  #container {
+    height: 1100px;
+  }
+  .plan {
+    width: 250px;
+  }
+  .desc {
+    height: 75px;
+  }
 }
 
 @media screen and (max-width: 1100px) {
-    #container {
-        height: 2100px;
-    }
-    #plans-container {
-        top: 75px;
-        display: flex;
-        flex-direction: column;
-    }
-    .plan {
-        display: block;
-        width: 70%;
-        margin: 10px auto;
-    }
-    h2 {
-        font-size: 20px;
-    }
-    h3 {
-        font-size: 16px;
-    }
-    .desc {
-        height: 50px;
-    }
+  #container {
+    height: 2100px;
+  }
+  #plans-container {
+    top: 75px;
+    display: flex;
+    flex-direction: column;
+  }
+  .plan {
+    display: block;
+    width: 70%;
+    margin: 10px auto;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  .desc {
+    height: 50px;
+  }
 }
 
 @media screen and (max-width: 700px) {
-    #container {
-        padding: 50px 15px 0;
-    }
-    #hero-img {
-        width: 80%;
-    }
+  #container {
+    padding: 50px 15px 0;
+  }
+  #hero-img {
+    width: 80%;
+  }
 }
