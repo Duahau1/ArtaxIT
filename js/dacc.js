@@ -31,7 +31,7 @@ function getData(){
                             document.getElementById("company-info").innerHTML = data.company_name;
                         
                          
-                         //Subscription section
+                         //Subscription and trouble ticket section
                             fetch("https://mcval.herokuapp.com/dashboard", {
                                 headers: {
                                     'authorization': localStorage.getItem('token')
@@ -42,12 +42,11 @@ function getData(){
                                 //populating  view
                                 
 
-                                document.getElementById("c-plan").innerHTML = data.subscription.planName;
-                                document.getElementById("n-billing").innerHTML = data.subscription.next_billing_day;
                                 
                                 if ( data.subscription.planName == 'none'){
                                    
-                                    document.getElementById('p-plan').innerHTML = "No Plan";
+                                    document.getElementById('c-plan').innerHTML = "No Plan";
+                                    document.getElementById('p-plan').innerHTML = "$0.00";
                                     document.getElementById('n-billing').innerHTML = "None";
                                     
                                     for (let i = 0; i < suggestion_b.length /*&& data.subscription.planName != "none"*/; i++) {
@@ -60,9 +59,12 @@ function getData(){
                                                                         
                                 }
                          
-                                else if ( data.subscription.planName == 'careBasic' || data.subscription.planName != null ){
+                                else if ( data.subscription.planName == 'careBasic' && data.subscription.planName != null ){
                                    
+                                    document.getElementById('c-plan').innerHTML = data.subscription.planName;
                                     document.getElementById('p-plan').innerHTML = plan_p[0];
+                                    document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
+                                    
                                     for (let i = 0; i < careBasic_b.length /*&& data.subscription.planName != "none"*/; i++) {
                                         let child = document.createElement('li');
                                         child.innerHTML = careBasic_b[i];
@@ -73,7 +75,11 @@ function getData(){
                                 }
 
                                 else if (data.subscription.planName == 'carePlus' ){
-                                    document.getElementById('p-plan').value = plan_p[1];
+
+                                    document.getElementById('c-plan').innerHTML = data.subscription.planName;
+                                    document.getElementById('p-plan').innerHTML = plan_p[1];
+                                    document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
+                    
                                     for (let i = 0; i < carePlus_b.length && data.subscription.planName != "none"; i++) {
                                         let child = document.createElement('li');
                                         child.innerHTML = carePlus_b[i];
@@ -84,7 +90,11 @@ function getData(){
                                 }
 
                                 else if (data.subscription.planName == 'carePro' ){
-                                    document.getElementById('p-plan').value = plan_p[2];
+                                    
+                                    document.getElementById('c-plan').innerHTML = data.subscription.planName;
+                                    document.getElementById('p-plan').innerHTML = plan_p[2];
+                                    document.getElementById('n-billing').innerHTML = data.subscription.next_billing_day;
+
                                     for (let i = 0; i < carePro_b.length && data.subscription.planName != "none"; i++) {
                                         let child = document.createElement('li');
                                         child.innerHTML = carePro_b[i];

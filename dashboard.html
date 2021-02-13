@@ -39,11 +39,20 @@
             </div>
             <div class="overview-item">
                 <h4>Subscription</h4>
+                <!-- current plan from database: -->
+                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
                 <p class="sub-header">Current plan:</p>
-                    <p id="splan" class="info">None</p>
+                    <p class="info" id="c-plan">careBasic</p>
+                     <!-- billing interval and next dill date($23.99/mo or $199/year on 2/4/2021) from database: -->
+                <p class="sub-header">Billing:</p>
+                    <p class="info" id="p-plan" >$17.99/mo</p>
+                <p class="sub-header" >Next bill date:</p>
+                    <p class="info" id="n-billing" >2/4/2021</p>
                 <p class="sub-header">Benefits:</p>
                 <ul id="plan_benefits">
+                    
                 </ul>
+                                
             </div>
         </div>
 
@@ -76,6 +85,52 @@
                 menuOpen = false;
             }
         }
+
+         //array plan's prices
+
+         let plan_p = [
+                "$17.99/mo", //careBasic
+                "$26.99/mo", //carePlus
+                "$34.99/mo" // carePlus
+            ]
+
+            //array no subscription plan
+            let suggestion_b = [
+                "It is required to subscribe to start:",
+                "Network and Hardware Troubleshooting",
+                "Windows/iMac",
+                "Remote Desktop",
+                "Virus, Malware & Spyware Removal",
+                "Data Backup/Recovery",
+                "Computer Repair & Maintenance"
+            ]
+
+            //array careBasic
+            let careBasic_b = [
+                "Basic Troubleshooting",
+                "Windows/iMac",
+                "Remote Desktop",
+                "Installation of AntiVirus",
+                "Virus, Malware & Spyware Removal",
+            ]
+            //array carePlus 
+            let carePlus_b = [
+                "All careBasic services",
+                "Wireless Network troubleshooting",
+                "Hardware Troubleshooting"
+            ]
+
+            //array carePlus 
+            let carePro_b = [
+                "All carePlus services",
+                "Email Setup & Maintenance",
+                "Data Backup/Recovery",
+                "Computer Repair & Maintenance"
+            ]
+
+        
+
+    </script>
 
     </script>
 
