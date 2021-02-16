@@ -36,16 +36,21 @@
                     <a class="info info-btn" id="live-chat-btn" href="https://tawk.to/chat/600652b8c31c9117cb6ffc3a/1esccmndb" target="_blank">Join Live Chat</a>
             </div>
             <div class="overview-item">
+             <form action="#" id="fticket">
                 <h4>Create Support Ticket</h4>
                 <p class="sub-header">Subject:</p>
-                <textarea class="info info-desc info-input-s"></textarea>
+                <textarea name="issue" id="issue" class="info info-desc info-input-s"></textarea>
                 <p class="sub-header">Description:</p>
-                <textarea class="info info-desc info-input-l"></textarea>
-                <p class="sub-header">Images:</p>
+                <textarea name="description" id="desc" class="info info-desc info-input-l"></textarea>
+                <!-- <p class="sub-header">Images:</p> -->
                 <!-- add images to support ticket -->
-                <input id="add-img-btn" type="file" name="filename">
-                <button class="info info-btn">Create Support Ticket</button>
-                </ul>
+                <!-- <div id="pics"> -->
+                    <!-- <input id="add-img-btn" class="photos" type="file"  accept="image/png, image/jpeg" name="file"> -->
+                <!-- </div> -->
+                <!-- <div id="prompt"></div> -->
+                
+                <button id="createT" class="info info-btn">Create a ticket</button>
+              </form>
             </div>
         </div>
 
@@ -80,7 +85,7 @@
         }
 
     </script>
-
+<script src="/js/dsupp.js"></script>
 </body>
 
 </html>
