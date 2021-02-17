@@ -172,13 +172,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let endpoint = "https://mcval.herokuapp.com/ticket/create";
         //defining the header
         let h = new Headers;
-        h.append('Content-Type', 'Multipart/form-data');
         h.append ('authorization', localStorage.getItem('token'));
         //post request object to the endpoint
         let req = new Request(endpoint,{
-            headers: h,
-            body: ftd,
             method: 'POST',
+            headers: h,
+            body: ftd
         });
 
         //execute a request
@@ -192,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(data.message);
                              }
                     else{
-                         document.getElementById('issue').value ='';
+                         document.getElementById('is').value ='';
                          document.getElementById('desc').value = '';
                         //  document.getElementById("prompt").innerHTML="Something went wrong, try again";
                         //  document.getElementById("prompt").style.color="red";

@@ -33,26 +33,26 @@ let careBasic_benefits = [
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
         getData();
-        // if (getParameterByName("token") == null) {
-        //     
-        // }
-        // else{
-        //             let token = getParameterByName("token");
-        //             let ba_token = getParameterByName("ba_token");
-        //             fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
-        //                 headers: {
+        if (getParameterByName("token") == null) {
+            
+        }
+        else{
+                    let token = getParameterByName("token");
+                    let ba_token = getParameterByName("ba_token");
+                    fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
+                        headers: {
 
-        //                     'authorization': localStorage.getItem('token')
-        //                 }
-        //             }).then(res=>res.json()).then(data=>{
-        //                 if(data.status=="good"){
-        //                     window.location.href="../dashboard.html";
-        //                 }
-        //                 else{
-        //                     console.log("data payment did not go through")
-        //                 }
-        //             })
-        // }
+                            'authorization': localStorage.getItem('token')
+                        }
+                    }).then(res=>res.json()).then(data=>{
+                        if(data.status=="good"){
+                            consolo.log("payment went through!");
+                        }
+                        else{
+                            console.log("data payment did not go through")
+                        }
+                    })
+        }
     }
     else {
         localStorage.clear();
@@ -144,7 +144,7 @@ function getData(){
             var last = data.trouble_ticket.ticket.length - 1;
             document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
             document.getElementById("tdescription").innerHTML = data.trouble_ticket.ticket[last].description;
-            if (!data.trouble_ticket.ticket[last].status > 0)
+            if (!data.trouble_ticket.ticket[last].status == 0)
                 document.getElementById("tstatus").innerHTML = 'Open';
             else
                 document.getElementById("tstatus").innerHTML = 'Close';
