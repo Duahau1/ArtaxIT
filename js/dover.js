@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }).then(res=>res.json()).then(data=>{
                         if(data.status=="good"){
-                            consolo.log("payment went through!");
+                            console.log("payment went through!");
                         }
                         else{
                             console.log("data payment did not go through")
