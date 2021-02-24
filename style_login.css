@@ -78,15 +78,15 @@ h1 {
 
 #forgot-password-link {
     font-size: 15px;
-    font-weight: lighter;
+    font-weight: bold;
     font-style: italic;
     color: red;
     display: block;
-    margin-left: 500px;
     position: relative;
     text-align: center;
-    top: -420px;
-    left: -50px;
+    margin-left: 350px;
+    top: -370px;
+    left: 0px;
     text-decoration: none;
 }
 a#forgot-password-link:hover {
@@ -127,6 +127,9 @@ a#forgot-password-link:hover {
     }
     #submit-btn, #create-acc-link {
         width: 330px;
+    }
+    #forgot-password-link {
+        margin-left: 350px;
     }
 }
 
@@ -198,7 +201,7 @@ a#forgot-password-link:hover {
         display: block;
         margin: 0 auto;
         left: 0;
-        top: -10px;
+        top: 75px;
     }
 }
 
