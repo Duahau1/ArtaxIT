@@ -45,11 +45,13 @@ function fpass(e) { //get reset password link
             console.log('Response endpoint'+ data.message);
 
             if(data.status==="good"){ 
-                    console.log('Response endpoint'+data.message);
-                    fd.reset();
+                    console.log('Please '+data.message);
+                    fd[0].value ='';
+                    fd[1].value ='';
+                    location = 'https://artaxit.com'
                             }
                     else{
-                        console.log('ohoo!'+data.message);
+                        alert('Please contact the administration');
                         
                                 }
         })
