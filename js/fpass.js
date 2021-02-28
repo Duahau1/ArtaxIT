@@ -80,7 +80,7 @@ function fpass(e) { //get reset password link
                     console.log('Please '+data.message);
                     fd[0].value ='';
                     fd[1].value ='';
-                    location = 'reset_ty.html'; //'https://user.artaxit.com/reset_ty.html';
+                    location = 'https://user.artaxit.com/reset_ty.html';
                             }
                     else{
                         alert( data.message + ", please verify and try again");
