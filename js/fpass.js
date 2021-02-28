@@ -77,7 +77,6 @@ function fpass(e) { //get reset password link
             console.log('Response endpoint'+ data.message);
 
             if(data.status==="good"){ 
-                    console.log('Please '+data.message);
                     fd[0].value ='';
                     fd[1].value ='';
                     location = 'https://user.artaxit.com/reset_ty.html';
