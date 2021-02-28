@@ -58,7 +58,7 @@ function rpass(e) { //get reset password link
                 console.log('Please '+data.message);
                 fd[0].value ='';
                 fd[1].value ='';
-                location = 'https://artaxit.com'
+                location = 'https://mcval.herokuapp.com/reset_ty.html'
                         }
                 else{
                     alert(data.message);
