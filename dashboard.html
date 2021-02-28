@@ -16,6 +16,7 @@
 <body>
 
     <img id="hero-img-tablet" src="Images/logoartaxit-horizontal.png" alt="hero-img">
+
     <div class="sidebar">
         <img id="hero-img" src="Images/logoartaxit-horizontal.png" alt="hero-img">
         <a class="menu-link active" id="link1" href="dashboard.html">Overview</a>
@@ -26,41 +27,33 @@
     </div>
       
     <div class="content">
+
         <h3>Overview</h3>
+
         <div id="overview-container">
+
             <div class="overview-item">
                 <h4>Support Ticket Status</h4>
                 <p class="sub-header">Ticket #:</p>
-                    <!-- latest ticket # from database -->
-                    <p id="tid" class="info">-</p>
+                    <p id="tid" class="info"></p>
                 <p class="sub-header">Status:</p>
-                    <!-- status from database -->
-                    <p id="tstatus" class="info">-</p>
+                    <p id="tstatus" class="info"></p>
                 <p class="sub-header">Description:</p>
-                    <!-- desc from database -->
                     <p id="tdescription" class="info info-desc"></p>
             </div>
+
             <div class="overview-item">
                 <h4>Subscription</h4>
-                <!-- current plan from database: -->
-                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
                 <p class="sub-header">Current plan:</p>
-                    <p class="info" id="c-plan">careBasic</p>
-                     <!-- billing interval and next dill date($23.99/mo or $199/year on 2/4/2021) from database: -->
+                    <p class="info" id="c-plan">None</p>
                 <p class="sub-header">Billing:</p>
-                    <p class="info" id="p-plan" >$17.99/mo</p>
+                    <p class="info" id="p-plan" >$0.00</p>
                 <p class="sub-header" >Next bill date:</p>
-                    <p class="info" id="n-billing" >2/4/2021</p>
-                <p class="sub-header">Benefits:</p>
-                <ul id="plan_benefits">
-                    
-                    <!-- splan values are 'careBasic', 'carePlus', and 'carePro' -->
-                    
-                <ul id="plan_benefits">
-                   
-                </ul>
-                                
+                    <p class="info" id="n-billing"></p>
+                <p class="sub-header">Benefits:</p>   
+                    <ul id="plan_benefits"></ul>         
             </div>
+
         </div>
 
         <div class="footer">
@@ -69,6 +62,7 @@
 
     </div>
 
+    
     <script>
 
         var menuOpen = false;
@@ -93,26 +87,19 @@
             }
         }
 
-         //array plan's prices
-
-         let plan_p = [
+        //array plan's prices
+            let plan_p = [
                 "$17.99/mo", //careBasic
                 "$26.99/mo", //carePlus
                 "$34.99/mo" // carePlus
             ]
 
-            //array no subscription plan
+        //array no subscription plan
             let suggestion_b = [
-                "It is required to subscribe to start:",
-                "Network and Hardware Troubleshooting",
-                "Windows/iMac",
-                "Remote Desktop",
-                "Virus, Malware & Spyware Removal",
-                "Data Backup/Recovery",
-                "Computer Repair & Maintenance"
+
             ]
 
-            //array careBasic
+        //array careBasic
             let careBasic_b = [
                 "Basic Troubleshooting",
                 "Windows/iMac",
@@ -120,24 +107,20 @@
                 "Installation of AntiVirus",
                 "Virus, Malware & Spyware Removal",
             ]
-            //array carePlus 
+        //array carePlus 
             let carePlus_b = [
                 "All careBasic services",
                 "Wireless Network troubleshooting",
                 "Hardware Troubleshooting"
             ]
 
-            //array carePlus 
+        //array carePlus 
             let carePro_b = [
                 "All carePlus services",
                 "Email Setup & Maintenance",
                 "Data Backup/Recovery",
                 "Computer Repair & Maintenance"
             ]
-
-        
-
-    
 
     </script>
 

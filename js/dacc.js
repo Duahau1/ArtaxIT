@@ -45,9 +45,9 @@ function getData(){
                                 
                                 if ( data.subscription.planName == 'none'){
                                    
-                                    document.getElementById('c-plan').innerHTML = "No Plan";
+                                    document.getElementById('c-plan').innerHTML = "None";
                                     document.getElementById('p-plan').innerHTML = "$0.00";
-                                    document.getElementById('n-billing').innerHTML = "None";
+                                    document.getElementById('n-billing').innerHTML = "";
                                     
                                     for (let i = 0; i < suggestion_b.length /*&& data.subscription.planName != "none"*/; i++) {
                                         let child = document.createElement('li');

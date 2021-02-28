@@ -77,7 +77,7 @@ function getData(){
         
         if ( data.subscription.planName == 'none'){
         
-            document.getElementById('c-plan').innerHTML = "No Active";
+            document.getElementById('c-plan').innerHTML = "None";
             document.getElementById('p-plan').innerHTML = "$0.00";
             document.getElementById('n-billing').innerHTML = "None";
             
