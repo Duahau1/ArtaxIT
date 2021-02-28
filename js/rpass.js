@@ -66,11 +66,9 @@ function rpass(e) { //get reset password link
                             }
     })
     .catch(console.warn);
-    }
-    else {
-
-    } // end form validation
-            
+    } else {
+        // end form validation      
+    }           
 }
 
 //validate password

@@ -31,12 +31,8 @@ document.getElementById("carePro").addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
         console.log('ready')
-    }
-    else{
-
+    } else {
         localStorage.clear();
         window.location.href = "../index.html";
     }
-
-
 });
