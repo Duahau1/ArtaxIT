@@ -1,12 +1,5 @@
+// JS file for dashboard_acc.html
 
-
-
-
-// Handler when the DOM is fully loaded
-
-
-
-//populating dashboard_acc
 
 function getData(){
     fetch("https://mcval.herokuapp.com/user/information", {
@@ -45,9 +38,9 @@ function getData(){
                                 
                                 if ( data.subscription.planName == 'none'){
                                    
-                                    document.getElementById('c-plan').innerHTML = "No Plan";
+                                    document.getElementById('c-plan').innerHTML = "None";
                                     document.getElementById('p-plan').innerHTML = "$0.00";
-                                    document.getElementById('n-billing').innerHTML = "None";
+                                    document.getElementById('n-billing').innerHTML = "";
                                     
                                     for (let i = 0; i < suggestion_b.length /*&& data.subscription.planName != "none"*/; i++) {
                                         let child = document.createElement('li');
@@ -113,13 +106,13 @@ function getData(){
                                     }
                                     
                                     else {
-                                         // Manipulating the buttons -> show cancel and show purchase subcription
+                                        // Manipulating the buttons -> show cancel and show purchase subcription
                                         
-                                         btn_purchase.classList.add('hide');
-                                         btn_cancel.classList.remove('hide');
+                                        btn_purchase.classList.add('hide');
+                                        btn_cancel.classList.remove('hide');
 
-                                         // adding event to cancel subscription
-                                         btn_cancel.addEventListener('click', () => {
+                                        // adding event to cancel subscription
+                                        btn_cancel.addEventListener('click', () => {
                                             fetch("https://mcval.herokuapp.com/dashboard/subscription/cancel", {
                                                 headers: {
                                                     'authorization': localStorage.getItem('token')
@@ -133,11 +126,7 @@ function getData(){
                                                 }
                                             })
                                         })
-
-
-                                    }
-                                   
-                                
+                                    }                                
                                 }
                                 else{
                                     console.log(data.message);
@@ -180,67 +169,64 @@ document.getElementById("save-btn").addEventListener("click", function() {
     sMyInfo(); //update field
     save_form(); //hide and show elements
 
-  });
+});
 
 function save_form() {
-     
+    
+    fname_input_node.classList.add("hide");
+    fname_info_node.classList.remove("hide");
 
-   fname_input_node.classList.add("hide");
-   fname_info_node.classList.remove("hide");
+    lname_input_node.classList.add("hide");
+    lname_info_node.classList.remove("hide");
 
-   lname_input_node.classList.add("hide");
-   lname_info_node.classList.remove("hide");
+    phone_input_node.classList.add("hide");
+    phone_info_node.classList.remove("hide");
 
-   phone_input_node.classList.add("hide");
-   phone_info_node.classList.remove("hide");
+    company_input_node.classList.add("hide");
+    company_info_node.classList.remove("hide");
 
-   company_input_node.classList.add("hide");
-   company_info_node.classList.remove("hide");
-
-   save_btn_node.classList.add("hide");
-   edit_btn_node.classList.remove("hide");
+    save_btn_node.classList.add("hide");
+    edit_btn_node.classList.remove("hide");
    
 }
 
 function edit_info() {
 
     // first name = fname_ 
-   fname_input_node.classList.remove("hide");
-   fname_info_node.classList.add("hide");
+    fname_input_node.classList.remove("hide");
+    fname_info_node.classList.add("hide");
 
-   //manipulation existing data
-   var tname = fname_info_node.innerText;
-   document.getElementById('fname-input').value = tname;
+    //manipulation existing data
+    var tname = fname_info_node.innerText;
+    document.getElementById('fname-input').value = tname;
 
-   // last name  =  lname_
-   lname_input_node.classList.remove("hide");
-   lname_info_node.classList.add("hide");
-    
-   //manipulation existing data
-   var tlast = lname_info_node.innerText;
-   document.getElementById('lname-input').value = tlast;
+    // last name  =  lname_
+    lname_input_node.classList.remove("hide");
+    lname_info_node.classList.add("hide");
+        
+    //manipulation existing data
+    var tlast = lname_info_node.innerText;
+    document.getElementById('lname-input').value = tlast;
 
-   // phone number  =  phone_
-   phone_input_node.classList.remove("hide");
-   phone_info_node.classList.add("hide");
+    // phone number  =  phone_
+    phone_input_node.classList.remove("hide");
+    phone_info_node.classList.add("hide");
 
-   //manipulation existing data
-   var tphone = phone_info_node.innerText;
-   document.getElementById('phone-input').value = tphone;
+    //manipulation existing data
+    var tphone = phone_info_node.innerText;
+    document.getElementById('phone-input').value = tphone;
 
-   // company name = company_
-   company_input_node.classList.remove("hide");
-   company_info_node.classList.add("hide");
-   //manipulation existing data
-   var tcname = company_info_node.innerText;
-   document.getElementById('company-input').value = tcname;
+    // company name = company_
+    company_input_node.classList.remove("hide");
+    company_info_node.classList.add("hide");
+    //manipulation existing data
+    var tcname = company_info_node.innerText;
+    document.getElementById('company-input').value = tcname;
 
 
-   save_btn_node.classList.remove("hide");
-   edit_btn_node.classList.add("hide");
+    save_btn_node.classList.remove("hide");
+    edit_btn_node.classList.add("hide");
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
         if (localStorage.getItem('token')) {
@@ -251,21 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.clear();
             window.location.href = "../index.html";
         }
-    
-   
 });
-
-
-
-
-// updating My info section
-//edit-info-input 
-/*
-"first_name": "first",
- "last_name": "last",
- "phone_number": 22222,
- "company_name": "artaxIt"
-*/
 
 let titles = [
 
@@ -276,18 +248,12 @@ let titles = [
 
 ]
 
-
-
-
-
-
 function sMyInfo(){
 
     let inputFields=[...document.querySelectorAll('.edit-info-input')]
     let fvalues = [];
     for (let index = 0; index < inputFields.length; index++) {
-        fvalues.push (inputFields[index].value);
-        
+        fvalues.push (inputFields[index].value);      
     }
 
     //fvalues
@@ -300,37 +266,28 @@ function sMyInfo(){
     }
     
     fetch("https://mcval.herokuapp.com/user/edit",{
-         method: 'PATCH',
-         //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
-         headers:{
+        method: 'PATCH',
+        //credentials: 'include', it was requiered before that the credentials, now it says req to be a wild *.*
+        headers:{
             'Content-Type': 'application/json',
             'authorization': localStorage.getItem('token')
-         },
-         body:JSON.stringify(req),
-     }) 
-     .then(result=>result.json())
-     .then(data=>{
-         if(data.status==="good"){ 
-             console.log(data);
-             console.log(data.first_name);
-             console.log(document.getElementById('fname-info'));
+        },
+        body:JSON.stringify(req),
+    }) 
+    .then(result=>result.json())
+    .then(data=>{
+        if(data.status==="good"){ 
+            console.log(data);
+            console.log(data.first_name);
+            console.log(document.getElementById('fname-info'));
             document.getElementById('fname-info').innerHTML = data.first_name;
             document.getElementById('lname-info').innerHTML = data.last_name;
             document.getElementById('phone-info').innerHTML = data.phone_number;
             document.getElementById('company-info').innerHTML = data.company_name;
          }
-         else{
-             inputFields.reset();
-             /*document.getElementById("prompt").innerHTML="Incorrect username or password";
-             document.getElementById("prompt").style.color="red";*/
-         }
-     })
-     .catch(err=>console.log(err));
-
-    
+        else{
+            inputFields.reset();
+        }
+    })
+    .catch(err=>console.log(err));  
 }
-
-
-
-
-

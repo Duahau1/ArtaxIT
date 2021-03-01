@@ -58,7 +58,7 @@ function rpass(e) { //get reset password link
                 console.log('Please '+data.message);
                 fd[0].value ='';
                 fd[1].value ='';
-                location = 'https://artax-it.vercel.app'
+                location = 'https://artax-it.vercel.app/'
                         }
                 else{
                     alert(data.message);

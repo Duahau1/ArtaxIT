@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // Handler when the DOM is fully loaded
 
     function store(){
-
-            
+        
         //get info from the form
             var fname = document.getElementById("fname-input");
             var lname = document.getElementById("lname-input");

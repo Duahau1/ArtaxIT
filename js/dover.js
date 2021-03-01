@@ -1,14 +1,18 @@
+// JS file for dashboard.html
+
+
 // log_out 
 function logOut() {
-
     localStorage.clear();
     window.location.href = "../index.html";
 
 }
+
 function removeList() {
     const removeElements = (elms) => elms.forEach(el => el.remove());
     removeElements(document.querySelectorAll(".item_benefit"));
 }
+
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -17,8 +21,8 @@ function getParameterByName(name, url = window.location.href) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-// populating dashboard with data
 
+// populating dashboard with data
 // Handler when the DOM is fully loaded
 let careBasic_benefits = [
     "Basic Troubleshooting",
@@ -28,17 +32,14 @@ let careBasic_benefits = [
     "Virus, Malware & Spyware Removal",
 ]
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem('token')) {
         getData();
-        if (getParameterByName("token") == null) {
-            
-        }
-        else{
-                    let token = getParameterByName("token");
-                    let ba_token = getParameterByName("ba_token");
+        if (getParameterByName("token") == null) {  
+        
+        } else {
+            let token = getParameterByName("token");
+                let ba_token = getParameterByName("ba_token");
                     fetch(`https://mcval.herokuapp.com/dashboard/subscription/purchase?token=${token}&ba_token=${ba_token}`,{
                         headers: {
 
@@ -74,12 +75,11 @@ function getData(){
             
         //populating  view subscription overview items
         
-        
         if ( data.subscription.planName == 'none'){
         
-            document.getElementById('c-plan').innerHTML = "No Active";
+            document.getElementById('c-plan').innerHTML = "None";
             document.getElementById('p-plan').innerHTML = "$0.00";
-            document.getElementById('n-billing').innerHTML = "None";
+            document.getElementById('n-billing').innerHTML = "";
             
             for (let i = 0; i < suggestion_b.length /*&& data.subscription.planName != "none"*/; i++) {
                 let child = document.createElement('li');
@@ -135,8 +135,6 @@ function getData(){
                 document.getElementById("plan_benefits").appendChild(child);
             }
         }
-        
-        
         }
 
         if(data.trouble_ticket.ticket.length > 0 ){
@@ -163,6 +161,3 @@ function getData(){
     })
 
 }
-
-
-
