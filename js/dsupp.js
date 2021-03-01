@@ -197,16 +197,19 @@ document.addEventListener("DOMContentLoaded", function () {
             
         });
         
-function eform(e){ //empty form
+function eform(e){ // json fields * ticket without photo
 
         //prevent reload
         e.preventDefault();
         //formdata 
-        let fticket = e.target;
+        //let fticket = e.target;
         //form ticket data = ftd
         let form = document.getElementById('fticket')
-        let ftd = document.querySelectorAll('.form');
-        
+        let fields = document.querySelectorAll('.form');
+        let ftd = {
+            "issue": fields[0].value,
+            "description": fields[1].value
+        }
         //end point
         let endpoint = "https://mcval.herokuapp.com/ticket/create";
         //defining the header
@@ -231,9 +234,7 @@ function eform(e){ //empty form
                     form.reset();
                              }
                     else{
-                         document.getElementById('is').value ='';
-                         document.getElementById('desc').value = '';
-                        
+                        form.reset();
                                 }
         })
         .catch(console.warn);
@@ -249,7 +250,7 @@ function pform(e) { //photos form
         e.preventDefault();
         //formdata 
         //form ticket data = ftd
-        let ftd = document.getElementById('fticket')
+        let ftd = document.getElementById('fticket');
         //let ftd = document.querySelectorAll('.form');
          //POST https://mcval.herokuapp.com/ticket/create_pic"
 
@@ -270,6 +271,7 @@ function pform(e) { //photos form
         //defining the header
         let h = new Headers;
         h.append ('authorization', localStorage.getItem('token'));
+        h.append ('Content-Type','multipart/form-data');
         //post request object to the endpoint
         let req = new Request(endpoint,{
             method: 'POST',
