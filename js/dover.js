@@ -140,7 +140,7 @@ function getData(){
         if(data.trouble_ticket.ticket.length > 0 ){
 
             var last = data.trouble_ticket.ticket.length - 1;
-            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].id;
+            document.getElementById("tid").innerHTML = data.trouble_ticket.ticket[last].issue;
             document.getElementById("tdescription").innerHTML = data.trouble_ticket.ticket[last].description;
             if (!data.trouble_ticket.ticket[last].status == 0)
                 document.getElementById("tstatus").innerHTML = 'Open';

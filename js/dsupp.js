@@ -204,16 +204,20 @@ function eform(e){ // json fields * ticket without photo
         //formdata 
         //let fticket = e.target;
         //form ticket data = ftd
-        let form = document.getElementById('fticket')
-        let fields = document.querySelectorAll('.form');
-        let ftd = {
-            "issue": fields[0].value,
-            "description": fields[1].value
-        }
+        // let form = document.getElementById('fticket')
+        // let fields = document.querySelectorAll('.form');
+        // let ftd = {
+        //     "issue": fields[0].value,
+        //     "description": fields[1].value
+        // }
+        let form = document.getElementById('fticket');
+        var ftd = new FormData(form);
+        //console.log(fields[1].value);
         //end point
         let endpoint = "https://mcval.herokuapp.com/ticket/create";
         //defining the header
         let h = new Headers;
+        //h.append ('Content-Type', 'application/json');
         h.append ('authorization', localStorage.getItem('token'));
         //post request object to the endpoint
         let req = new Request(endpoint,{
@@ -250,7 +254,8 @@ function pform(e) { //photos form
         e.preventDefault();
         //formdata 
         //form ticket data = ftd
-        let ftd = document.getElementById('fticket');
+        let form = document.getElementById('fticket');
+        var ftd = new FormData(form);
         //let ftd = document.querySelectorAll('.form');
          //POST https://mcval.herokuapp.com/ticket/create_pic"
 
@@ -271,7 +276,7 @@ function pform(e) { //photos form
         //defining the header
         let h = new Headers;
         h.append ('authorization', localStorage.getItem('token'));
-        h.append ('Content-Type','multipart/form-data');
+        //h.append ('Content-Type','multipart/form-data');
         //post request object to the endpoint
         let req = new Request(endpoint,{
             method: 'POST',
