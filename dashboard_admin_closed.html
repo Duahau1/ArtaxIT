@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style_dashboard.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">  
+    <title>ArtaxIT - Admin Dashboard</title>
+
+</head>
+
+
+<body>
+
+    <img id="hero-img-tablet" src="Images/logoartaxit-horizontal.png" alt="hero-img">
+
+    <div class="sidebar">
+        <img id="hero-img" src="Images/logoartaxit-horizontal.png" alt="hero-img">
+        <a class="menu-link" id="link1" href="dashboard_admin_open.html">Open Tickets</a>
+        <a class="menu-link active" href="dashboard_admin_closed.html">Closed Tickets</a>
+        <a class="menu-link" id="logout-btn" href="https://www.ArtaxIT.com/" onclick="logOut()">Log Out</a>
+        <button id="menu-btn" onclick="openMenu()">+</button>
+    </div>
+      
+    <div class="content">
+
+        <h3>Closed Tickets</h3>
+
+        <label class="dropdown_label" for="ticket_select">Select ticket:</label>
+            <select name="cars" class="dropdown" id="ticket_select">
+                <option value="ticket1">1</option>
+                <option value="ticket2">2</option>
+                <option value="ticket3">3</option>
+                <option value="ticket4">4</option>
+            </select>
+
+        <div id="overview-container">
+
+            <div class="overview-item">
+                <h4>Support Ticket Information</h4>
+                <p class="sub-header">Subject:</p>
+                    <p id="tid" class="info"></p>
+                <p class="sub-header">Description:</p>
+                    <p id="tdescription" class="info info-desc"></p>
+                <p class="sub-header">Images:</p>
+                    <div id="" class="info info-desc">
+                        <!-- populate with ticket images -->
+                    </div>
+                    <button class="info info-btn" id="close-ticket-btn" onclick="">Re-open Ticket</button>
+            </div>
+
+            <div class="overview-item">
+                <h4>User Information</h4>
+                <p class="sub-header">Username:</p>
+                    <p class="info" id=""></p>
+                <p class="sub-header">Name:</p>
+                    <p class="info" id=""></p>
+                <p class="sub-header" >Phone:</p>
+                    <p class="info" id=""></p>
+                <p class="sub-header">Email:</p>
+                    <p class="info" id=""></p>   
+                           
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <a id="footer-link" href="https://www.ArtaxIT.com/">www.ArtaxIT.com</a>
+        </div>
+
+    </div>
+
+    
+    <script>
+
+        var menuOpen = false;
+
+        function openMenu() {
+            var menuLinkNode = document.getElementsByClassName("menu-link");
+            var menuButtonNode = document.getElementById("menu-btn")
+            if (!menuOpen) {
+                var i = 0; 
+    		    for (i = 0; i < menuLinkNode.length; i++) {
+    			    menuLinkNode[i].classList.add("show-links");
+                }
+                menuButtonNode.innerHTML = "-";
+                menuOpen = true;
+            } else {
+                var i = 0; 
+    		    for (i = 0; i < menuLinkNode.length; i++) {
+    			    menuLinkNode[i].classList.remove("show-links");
+                }
+                menuButtonNode.innerHTML = "+";
+                menuOpen = false;
+            }
+        }
+
+        //array plan's prices
+            let plan_p = [
+                "$17.99/mo", //careBasic
+                "$26.99/mo", //carePlus
+                "$34.99/mo" // carePlus
+            ]
+
+        //array no subscription plan
+            let suggestion_b = [
+
+            ]
+
+        //array careBasic
+            let careBasic_b = [
+                "Basic Troubleshooting",
+                "Windows/iMac",
+                "Remote Desktop",
+                "Installation of AntiVirus",
+                "Virus, Malware & Spyware Removal",
+            ]
+        //array carePlus 
+            let carePlus_b = [
+                "All careBasic services",
+                "Wireless Network troubleshooting",
+                "Hardware Troubleshooting"
+            ]
+
+        //array carePlus 
+            let carePro_b = [
+                "All carePlus services",
+                "Email Setup & Maintenance",
+                "Data Backup/Recovery",
+                "Computer Repair & Maintenance"
+            ]
+
+    </script>
+
+    <!-- <script src="js/dadmin.js"></script>  -->
+
+</body>
+
+</html>

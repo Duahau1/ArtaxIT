@@ -195,7 +195,23 @@ li {
 
 .hide {
     display: none;
- }
+}
+
+.dropdown_label {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.dropdown {
+    display: block;
+    background-color: white;
+    width: 500px;
+    height: 30px;
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
 
 .footer {
     width: 100%;
