@@ -29,12 +29,9 @@
 
         <h3>Open Tickets</h3>
 
-        <label class="dropdown_label" for="ticket_select">Select ticket:</label>
-            <select name="cars" class="dropdown" id="ticket_select">
-                <option value="ticket1">1</option>
-                <option value="ticket2">2</option>
-                <option value="ticket3">3</option>
-                <option value="ticket4">4</option>
+        <label class="dropdown_label" for="ticket_select">Select Customer:</label>
+            <select name="customers" class="dropdown" id="cust">
+                <option id="customer-id" value="customer-name">1</option>
             </select>
 
         <div id="overview-container">
@@ -42,27 +39,35 @@
             <div class="overview-item">
                 <h4>Support Ticket Information</h4>
                 <p class="sub-header">Subject:</p>
-                    <p id="tid" class="info"></p>
+                <!-- ticket data = tid -->
+                    <p id="tid" class="info"></p> 
                 <p class="sub-header">Description:</p>
                     <p id="tdescription" class="info info-desc"></p>
                 <p class="sub-header">Images:</p>
-                    <div id="" class="info info-desc">
+                <!-- ticket picture = tip -->
+                    <div id="tip" class="info info-desc">
                         <!-- populate with ticket images -->
                     </div>
-                    <button class="info info-btn" id="close-ticket-btn" onclick="">Close Ticket</button>
+                    <!-- close ticket = closeT() -->
+                    <button class="info info-btn" id="close-ticket-btn" onclick=closeT()>Close Ticket</button>
             </div>
 
             <div class="overview-item">
                 <h4>User Information</h4>
                 <p class="sub-header">Username:</p>
-                    <p class="info" id=""></p>
+                    <p class="info" id="user"></p>
                 <p class="sub-header">Name:</p>
-                    <p class="info" id=""></p>
+                    <p class="info" id="name"></p>
                 <p class="sub-header" >Phone:</p>
-                    <p class="info" id=""></p>
+                    <p class="info" id="phone"></p>
                 <p class="sub-header">Email:</p>
-                    <p class="info" id=""></p>   
+                    <p class="info" id="email"></p>   
                            
+            </div>
+
+            <div id="pagination" >
+                <a href="javascript:prevPage()" id="btn_prev">Prev</a>
+                <a href="javascript:nextPage()" id="btn_next">Next</a>
             </div>
 
         </div>
