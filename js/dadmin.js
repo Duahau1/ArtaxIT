@@ -6,43 +6,58 @@ function logOut() {
 
 }
 
-function removeList() {
+function removeList(elms) {
     const removeElements = (elms) => elms.forEach(el => el.remove());
-    removeElements(document.querySelectorAll(".item_benefit"));
+    removeElements(document.querySelectorAll(".ticket"));
 }
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem('token')) {
+   // if (localStorage.getItem('token')) {
+                 
+            // event listers for previous button
+            var pr = document.getElementById('btn_prev');
+            pr.addEventListener("click", prevPage);
+            // event lister for next button
+            var nx = document.getElementById('btn_next');
+            nx.addEventListener("click", nextPage);
         
-        //objJson
+//        } 
         
-        } 
-        
-    else {
-        localStorage.clear();
-        window.location.href = "../index.html";
-        }
+//    else {
+
+//             localStorage.clear();
+//             window.location.href = "../index.html";
+//        }
  });
 
 
 
 
-var current_page = 1;
-var tickets_pp = 1;
+var current_page = 1; // number of tickets open
+var tickets_pp = 1; // ticket shown at the time
 
-var objJson = [
-    { adName: "AdName 1"},
-    { adName: "AdName 2"},
-    { adName: "AdName 3"},
-    { adName: "AdName 4"},
-    { adName: "AdName 5"},
-    { adName: "AdName 6"},
-    { adName: "AdName 7"},
-    { adName: "AdName 8"},
-    { adName: "AdName 9"},
-    { adName: "AdName 10"}
+var objJson = [ //json user
+    { ticket: "ticket 1"},
+    { ticket: "ticket 2"},
+    { ticket: "ticket 3"},
+    { ticket: "ticket 4"},
+    { ticket: "ticket 5"},
+    { ticket: "ticket 6"},
+    { ticket: "ticket 7"},
+    { ticket: "ticket 8"},
+    { ticket: "ticket 9"},
+    { ticket: "ticket 10"}
 ]; // Can be obtained from another source, such as your objJson variable
+
+// 0 -> ticket_id (id = tid)
+// 1 -> issue (id = issue)
+// 2 -> description (id = tdescription)
+// 3 -> element containing picture (id = tip)
+
+//"javascript:prevPage()" id="btn_prev"
+//"javascript:nextPage()" id="btn_next"
+
 
 function prevPage()
 {
@@ -64,17 +79,19 @@ function changePage(page)
 {
     var btn_next = document.getElementById("btn_next");
     var btn_prev = document.getElementById("btn_prev");
-    var listing_table = document.getElementById("listingTable");
+    var ticket_details = document.getElementsByClassName("ticket");
     var page_span = document.getElementById("page");
  
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
+    if (page > 1) removeList(ticket_details);
 
-    listing_table.innerHTML = "";
+    //create elements
+    
 
     for (var i = (page-1) * tickets_pp; i < (page * tickets_pp); i++) {
-        listing_table.innerHTML += objJson[i].adName + "<br>";
+        ticket_details.value += objJson[i].ticket + "<br>";
     }
     page_span.innerHTML = page;
 

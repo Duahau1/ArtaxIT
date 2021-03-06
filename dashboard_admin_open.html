@@ -40,12 +40,13 @@
                 <h4>Support Ticket Information</h4>
                 <p class="sub-header">Subject:</p>
                 <!-- ticket data = tid -->
-                    <p id="tid" class="info"></p> 
+                    <p hidden id="tid" class="ticket"></p>
+                    <p  id="issue" class="info ticket"></p> 
                 <p class="sub-header">Description:</p>
-                    <p id="tdescription" class="info info-desc"></p>
+                    <p id="tdescription" class="info info-desc ticket"></p>
                 <p class="sub-header">Images:</p>
                 <!-- ticket picture = tip -->
-                    <div id="tip" class="info info-desc">
+                    <div id="tip" class="info info-desc ticket">
                         <!-- populate with ticket images -->
                     </div>
                     <!-- close ticket = closeT() -->
@@ -65,10 +66,12 @@
                            
             </div>
 
-            <div id="pagination" >
-                <a href="javascript:prevPage()" id="btn_prev">Prev</a>
-                <a href="javascript:nextPage()" id="btn_next">Next</a>
+            <div id="pagination" class="display:inline-block" >
+                <button id="btn_prev">Prev</button>
+                <span id="page">1</span>
+                <button id="btn_next">Next</button>
             </div>
+            
 
         </div>
 
@@ -140,7 +143,7 @@
 
     </script>
 
-    <!-- <script src="js/dadmin.js"></script>  -->
+    <script src="js/dadmin.js"></script> 
 
 </body>
 
