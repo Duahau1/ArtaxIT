@@ -42,12 +42,12 @@ var objJson = [ //json user
     { ticket: "ticket 2"},
     { ticket: "ticket 3"},
     { ticket: "ticket 4"},
-    { ticket: "ticket 5"},
-    { ticket: "ticket 6"},
-    { ticket: "ticket 7"},
-    { ticket: "ticket 8"},
-    { ticket: "ticket 9"},
-    { ticket: "ticket 10"}
+    { ticket: "ticket 5"}
+    // { ticket: "ticket 6"},
+    // { ticket: "ticket 7"},
+    // { ticket: "ticket 8"},
+    // { ticket: "ticket 9"},
+    // { ticket: "ticket 10"}
 ]; // Can be obtained from another source, such as your objJson variable
 
 // 0 -> ticket_id (id = tid)
@@ -85,7 +85,7 @@ function changePage(page)
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
-    if (page > 1) removeList(ticket_details);
+    // if (page > 1) removeList(ticket_details);
 
     //create elements
     
