@@ -38,6 +38,24 @@ var current_page = 1; // number of tickets open
 var tickets_pp = 1; // ticket shown at the time
 
 var objJson = [ //json user
+    { 'ticket_id': 0,
+      'issue' : 'not internet',
+      'description':'Network is fine, but it is just this pc',
+      'Image': 'null'  },
+    { 'ticket_id': 1,
+    'issue' : 'not moneyt',
+    'description':'pc not working',
+    'Image': 'null'},
+    {'ticket_id': 2,
+    'issue' : 'not internet',
+    'description':'Network is fine, but it is just this pc',
+    'Image': 'null'},
+    {'ticket_id': 3,
+    'issue' : 'not internet',
+    'description':'Network is fine, but it is just this pc',
+    'Image': 'null'}
+    
+
     { ticket: "ticket 1"},
     { ticket: "ticket 2"},
     { ticket: "ticket 3"},
@@ -48,6 +66,7 @@ var objJson = [ //json user
     // { ticket: "ticket 8"},
     // { ticket: "ticket 9"},
     // { ticket: "ticket 10"}
+
 ]; // Can be obtained from another source, such as your objJson variable
 
 // 0 -> ticket_id (id = tid)
@@ -81,18 +100,25 @@ function changePage(page)
     var btn_prev = document.getElementById("btn_prev");
     var ticket_details = document.getElementsByClassName("ticket");
     var page_span = document.getElementById("page");
- 
+    
+
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
-    // if (page > 1) removeList(ticket_details);
+ paginationB
+   // if (page > 1) removeList(ticket_details); // remove elements
 
-    //create elements
+    // if (page > 1) removeList(ticket_details);
+ main
+
+    //fill tags
+    ticket_details[0].innerHTML = objJson[page - 1].ticket_id;
+    ticket_details[0].innerHTML = objJson[page - 1].issue;
+    ticket_details[0].innerHTML = objJson[page - 1].description;
+    ticket_details[0].innerHTML = objJson[page - 1].Image;
     
 
-    for (var i = (page-1) * tickets_pp; i < (page * tickets_pp); i++) {
-        ticket_details.value += objJson[i].ticket + "<br>";
-    }
+    
     page_span.innerHTML = page;
 
     if (page == 1) {
