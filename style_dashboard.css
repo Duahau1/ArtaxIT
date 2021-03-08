@@ -212,6 +212,28 @@ li {
     border-radius: 5px;
 }
 
+#pagination {
+    display: block;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+#btn_prev {
+    background-color: transparent;
+    border: none;
+    margin-right: 10px;
+    font-size: 20px;
+}
+#page {
+    margin: 0 5px;
+    font-size: 20px;
+}
+#btn_next {
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    font-size: 20px;
+}
 
 .footer {
     width: 100%;

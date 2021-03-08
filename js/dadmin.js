@@ -55,6 +55,18 @@ var objJson = [ //json user
     'description':'Network is fine, but it is just this pc',
     'Image': 'null'}
     
+
+    { ticket: "ticket 1"},
+    { ticket: "ticket 2"},
+    { ticket: "ticket 3"},
+    { ticket: "ticket 4"},
+    { ticket: "ticket 5"}
+    // { ticket: "ticket 6"},
+    // { ticket: "ticket 7"},
+    // { ticket: "ticket 8"},
+    // { ticket: "ticket 9"},
+    // { ticket: "ticket 10"}
+
 ]; // Can be obtained from another source, such as your objJson variable
 
 // 0 -> ticket_id (id = tid)
@@ -93,7 +105,11 @@ function changePage(page)
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
+ paginationB
    // if (page > 1) removeList(ticket_details); // remove elements
+
+    // if (page > 1) removeList(ticket_details);
+ main
 
     //fill tags
     ticket_details[0].innerHTML = objJson[page - 1].ticket_id;
