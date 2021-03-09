@@ -5,15 +5,11 @@ function logOut() {
     window.location.href = "../index.html";
 
 }
-
-function removeList(elms) {
-    const removeElements = (elms) => elms.forEach(el => el.remove());
-    removeElements(document.querySelectorAll(".ticket"));
-}
+     
 
 
 document.addEventListener("DOMContentLoaded", function () {
-   // if (localStorage.getItem('token')) {
+   if (localStorage.getItem('token')) {
                  
             // event listers for previous button
             var pr = document.getElementById('btn_prev');
@@ -21,15 +17,145 @@ document.addEventListener("DOMContentLoaded", function () {
             // event lister for next button
             var nx = document.getElementById('btn_next');
             nx.addEventListener("click", nextPage);
+            getData();
+                                       
+            
+       } 
         
-//        } 
-        
-//    else {
+   else {
 
-//             localStorage.clear();
-//             window.location.href = "../index.html";
-//        }
+            localStorage.clear();
+            window.location.href = "../index.html";
+       }
+      
  });
+
+//populate first trouble ticket of the first user
+async function getUser() {
+   
+    var elementCust = document.getElementById("cust");
+    var userID = elementCust.value;
+    return userID;
+}
+
+function getT(userID) {
+
+    //end point
+    //all user with open trouble tickets
+    let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+    //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
+    //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
+    //defining the header
+    let h = new Headers;
+    //h.append ('Content-Type', 'application/json');
+      h.append ('authorization', localStorage.getItem('token'));
+    //post request object to the endpoint
+    let req = new Request(endpoint,{
+        method: 'GET',
+        headers: h
+        //body: ftd
+    });
+    //execute a request
+
+    fetch(req)
+    .then((res) => res.json())
+        .then((data) =>{
+            console.log('Status endpoint '+ data.status);
+
+            if(data.status==="good"){ 
+                    console.log(data.status);
+                    console.log(data);
+                    //fillCustomers(user);
+                    
+            }
+            else if (data.status==="err" ){
+                    alert(data.message);
+            }
+            else {
+                    console.log(data.message);
+            }
+            // reset form
+            //form.reset();
+        })
+        .catch(console.warn);
+    
+}
+
+
+//populate customers list
+// u -> user[]
+// cust = id element to populate
+function fillCustomers(u) {
+
+    for (let index = 0; index < u.length; index++) {
+        //creating the child element
+        var child = document.createElement('option');
+                child.value = u[index].id;
+                child.id = u[index].id;
+                child.text = u[index].company_name;
+        //appending element to the parent element
+        document.getElementById("cust").appendChild(child);
+        
+    }
+    return u[0].id;
+
+}
+
+
+
+
+ // variable to hold user info and trouble tickets
+var user
+
+var nfuser;
+
+var userID =14;
+ // getData
+
+ function getData() {
+
+    //end point
+    //all user with open trouble tickets
+    //let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+    let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
+    //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
+    //defining the header
+    let h = new Headers;
+    //h.append ('Content-Type', 'application/json');
+      h.append ('authorization', localStorage.getItem('token'));
+    //post request object to the endpoint
+    let req = new Request(endpoint,{
+        method: 'GET',
+        headers: h
+        //body: ftd
+    });
+    //execute a request
+
+    fetch(req)
+    .then((res) => res.json())
+        .then((data) =>{
+            console.log('Status endpoint '+ data.status);
+
+            if(data.status==="good"){ 
+                    console.log(data.status);
+                    user = data.user;
+                    //nfuser = user.length;
+                    fillCustomers(user);
+                    getUser();
+                    return user;
+            }
+            else if (data.status==="err" ){
+                    alert(data.message);
+            }
+            else {
+                    console.log(data.message);
+            }
+            // reset form
+            //form.reset();
+        })
+        .catch(console.warn);
+     
+ }
 
 
 
@@ -53,22 +179,17 @@ var objJson = [ //json user
     {'ticket_id': 3,
     'issue' : 'not internet',
     'description':'Network is fine, but it is just this pc',
+    'Image': 'null'},
+    {'ticket_id': 4,
+    'issue' : 'I am student',
+    'description':'I want a vacation to the bahamas',
     'Image': 'null'}
     
+    
 
-    { ticket: "ticket 1"},
-    { ticket: "ticket 2"},
-    { ticket: "ticket 3"},
-    { ticket: "ticket 4"},
-    { ticket: "ticket 5"}
-    // { ticket: "ticket 6"},
-    // { ticket: "ticket 7"},
-    // { ticket: "ticket 8"},
-    // { ticket: "ticket 9"},
-    // { ticket: "ticket 10"}
+]; 
 
-]; // Can be obtained from another source, such as your objJson variable
-
+//view to update
 // 0 -> ticket_id (id = tid)
 // 1 -> issue (id = issue)
 // 2 -> description (id = tdescription)
@@ -91,6 +212,7 @@ function nextPage()
     if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
+        
     }
 }
     
@@ -105,11 +227,11 @@ function changePage(page)
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
- paginationB
+ 
    // if (page > 1) removeList(ticket_details); // remove elements
 
     // if (page > 1) removeList(ticket_details);
- main
+
 
     //fill tags
     ticket_details[0].innerHTML = objJson[page - 1].ticket_id;
@@ -140,5 +262,5 @@ function numPages()
 }
 
 window.onload = function() {
-    changePage(1);
+    //changePage(current_page);
 };

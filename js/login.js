@@ -24,7 +24,10 @@ document.addEventListener("DOMContentLoaded", function(){
         .then(data=>{
             if(data.status==="good"){                 
                 localStorage.setItem("token", 'Bearer '+ data.token);
-                window.location.href = "../dashboard.html";
+                if (data.user_role === "client")
+                    {window.location.href = "../dashboard.html";}
+                else if (data.user_role === "admin")
+                    {window.location.href = "../dashboard_admin_open.html";}
             } else {
                 formInput.reset();
                 document.getElementById("prompt").innerHTML="Incorrect username or password";
