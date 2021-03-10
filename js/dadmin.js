@@ -54,7 +54,7 @@ function getT(userID) {
 //alert(userID);
     //userID = 50; 
 
-                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID+"?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
                             //defining the header
