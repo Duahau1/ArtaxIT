@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // event lister for next button
             var nx = document.getElementById('btn_next');
             nx.addEventListener("click", nextPage);
+            var sc = document.getElementById("cust");
+            sc.addEventListener("change", function() {
+                cuser(); // add event to the new input file
+            });
             getData();
                                        
             
@@ -33,51 +37,51 @@ document.addEventListener("DOMContentLoaded", function () {
 //populate first trouble ticket of the first user
 async function getUser() {
    
-    var elementCust = document.getElementById("cust");
-    var userID = elementCust.value;
-    return userID;
+    
 }
 
 function getT(userID) {
 
-    //end point
-    //all user with open trouble tickets
-    let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
-    //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
-    //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
-    //defining the header
-    let h = new Headers;
-    //h.append ('Content-Type', 'application/json');
-      h.append ('authorization', localStorage.getItem('token'));
-    //post request object to the endpoint
-    let req = new Request(endpoint,{
-        method: 'GET',
-        headers: h
-        //body: ftd
-    });
-    //execute a request
-
-    fetch(req)
-    .then((res) => res.json())
-        .then((data) =>{
-            console.log('Status endpoint '+ data.status);
-
-            if(data.status==="good"){ 
-                    console.log(data.status);
-                    console.log(data);
-                    //fillCustomers(user);
-                    
-            }
-            else if (data.status==="err" ){
-                    alert(data.message);
-            }
-            else {
-                    console.log(data.message);
-            }
-            // reset form
-            //form.reset();
-        })
-        .catch(console.warn);
+    //userID = 49; 
+                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+                            //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
+                            //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
+                            //defining the header
+                            let h = new Headers;
+                            //h.append ('Content-Type', 'application/json');
+                            h.append ('authorization', localStorage.getItem('token'));
+                            //post request object to the endpoint
+                            let req = new Request(endpoint,{
+                                method: 'GET',
+                                headers: h
+                                //body: ftd
+                            });
+                            //execute a request
+                        
+                            fetch(req)
+                            .then((res) => res.json())
+                                .then((data) =>{
+                                   // console.log('Status endpoint '+ data.user_id);
+                        
+                                    if(data[0].user_id){ 
+                                            userIT.push(data[0]);
+                                                console.log(userIT.length);
+                                                console.log(userIT);
+                                                
+                                            return userIT; // user_id , info [first_name, last_name,
+                                                        // email, company_name, phone_number, plan_id ]
+                                        //ticket[ticket_id, issue?, priority, description, status]                                            
+                                    }
+                                    else if (data[0].user_id == null){
+                                            alert(data);
+                                    }
+                                    else {
+                                            console.log(data);
+                                    }
+                                    // reset form
+                                    //form.reset();
+                                })
+                                .catch(console.warn);
     
 }
 
@@ -92,7 +96,10 @@ function fillCustomers(u) {
         var child = document.createElement('option');
                 child.value = u[index].id;
                 child.id = u[index].id;
-                child.text = u[index].company_name;
+                child.text = u[index].email;
+                // child.addEventListener("change", function() {
+                //     cuser(); // add event to the new input file
+                // });
         //appending element to the parent element
         document.getElementById("cust").appendChild(child);
         
@@ -104,10 +111,11 @@ function fillCustomers(u) {
 
 
 
- // variable to hold user info and trouble tickets
-var user
+ // variable to hold users 
+ var user = new Array();
+// variable to hold users Info and trouble tickets
+var userIT = new Array();
 
-var nfuser;
 
 var userID =14;
  // getData
@@ -134,14 +142,17 @@ var userID =14;
     fetch(req)
     .then((res) => res.json())
         .then((data) =>{
-            console.log('Status endpoint '+ data.status);
+            //console.log('Status endpoint '+ data.status);
 
             if(data.status==="good"){ 
-                    console.log(data.status);
-                    user = data.user;
-                    //nfuser = user.length;
-                    fillCustomers(user);
-                    getUser();
+                    //console.log(data.status);
+                    user.push(data.user);
+                    console.log(user);
+                    
+                   
+                    console.log(fillCustomers(user[0]));
+                    cuser();
+
                     return user;
             }
             else if (data.status==="err" ){
@@ -156,11 +167,55 @@ var userID =14;
         .catch(console.warn);
      
  }
+//close a ticket
+
+function closeT() {
+
+    //end point
+    //adm close trouble ticket
+    let endpoint = " https://mcval.herokuapp.com/admin/close_ticket";
+    //defining the header
+    let h = new Headers;
+    //h.append ('Content-Type', 'application/json');
+    h.append ('authorization', localStorage.getItem('token'));
+    //json required body = ftd
+    let ftd = {
+        "ticket_id": document.getElementById('tid')
+    }
+    //post request object to the endpoint
+   
+    let req = new Request(endpoint,{
+        method: 'POST',
+        headers: h,
+        body: JSON.stringify(ftd)
+    });
+    //execute a request
+
+    fetch(req)
+    .then((res) => res.json())
+        .then((data) =>{
+            //console.log('Status endpoint '+ data.status);
+
+            if(data.status==="good"){ 
+                    console.log('endpoint '+ data.message);
+            }
+            else if (data.status==="err" ){
+                    alert(data.message);
+            }
+            else {
+                    console.log(data.message);
+            }
+            // reset form
+            //form.reset();
+        })
+        .catch(console.warn);
+
+    
+}
 
 
 
-
-var current_page = 1; // number of tickets open
+var current_page = 0; // number of tickets open
 var tickets_pp = 1; // ticket shown at the time
 
 var objJson = [ //json user
@@ -209,12 +264,22 @@ function prevPage()
 
 function nextPage()
 {
-    if (current_page < numPages()) {
+    if (current_page < numTickets()) {
         current_page++;
         changePage(current_page);
         
     }
 }
+//change select option
+function cuser() {
+    var val = document.getElementById("cust");
+    var userID = val.options[val.selectedIndex].value;
+    
+    getT(userID);
+   
+}
+
+
     
 function changePage(page)
 {
@@ -226,7 +291,7 @@ function changePage(page)
 
     // Validate page
     if (page < 1) page = 1;
-    if (page > numPages()) page = numPages();
+    if (page > numTickets()) page = numTickets();
  
    // if (page > 1) removeList(ticket_details); // remove elements
 
@@ -234,10 +299,12 @@ function changePage(page)
 
 
     //fill tags
-    ticket_details[0].innerHTML = objJson[page - 1].ticket_id;
-    ticket_details[0].innerHTML = objJson[page - 1].issue;
-    ticket_details[0].innerHTML = objJson[page - 1].description;
-    ticket_details[0].innerHTML = objJson[page - 1].Image;
+    console.log (ticket_details);
+    ticket_details[0].innerHTML = userIT[0].info.tickets[page-1].ticket_id;
+    console.log(userIT[0].info.tickets[page-1].ticket_id);
+    ticket_details[1].innerHTML = userIT[0].info.tickets[page-1].issue;
+    ticket_details[2].innerHTML = userIT[0].info.tickets[page-1].description;
+    //ticket_details[0].innerHTML = objJson[page - 1].Image;
     
 
     
@@ -249,18 +316,16 @@ function changePage(page)
         btn_prev.style.visibility = "visible";
     }
 
-    if (page == numPages()) {
+    if (page == numTickets()) {
         btn_next.style.visibility = "hidden";
     } else {
         btn_next.style.visibility = "visible";
     }
 }
-
-function numPages()
+//how many ticket user.length
+function numTickets()
 {
-    return Math.ceil(objJson.length / tickets_pp);
+   return 5;
+   // return userIT[0].info.tickets.length;
+    
 }
-
-window.onload = function() {
-    //changePage(current_page);
-};
