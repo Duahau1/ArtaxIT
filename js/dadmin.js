@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
             var sc = document.getElementById("cust");
             sc.addEventListener("change", function() {
                 cuser(); // add event to the new input file
+
                 var page_span = document.getElementById("page");
                 current_page = 1;
                 page_span.innerHTML = current_page;
+
 
             });
             getData();
@@ -46,7 +48,12 @@ async function getUser() {
 
 function getT(userID) {
 
+
     //userID = 49; 
+
+//alert(userID);
+    //userID = 50; 
+
                             let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
@@ -69,12 +76,17 @@ function getT(userID) {
                         
                                     if(data[0].user_id){ 
 
+
                                         if (!userIT.has(userID))
                                             { userIT.set(userID,data[0]); }
                                             current_user = userID;
                                                 console.log(userIT.get(userID));
                                                 console.log(userIT);
                                                 changePage(current_page);
+
+                                           
+                                                
+
                                             return userIT; // user_id , info [first_name, last_name,
                                                         // email, company_name, phone_number, plan_id ]
                                         //ticket[ticket_id, issue?, priority, description, status]                                            
@@ -119,9 +131,11 @@ function fillCustomers(u) {
 
 
  // variable to hold users 
+
 let user = new Array();
 // variable to hold users Info and trouble tickets
 var userIT = new Map();
+
 
 
 var userID =14;
@@ -221,6 +235,14 @@ function closeT() {
 }
 
 
+
+var current_page = 0; // number of tickets open
+var tickets_pp = 1; // ticket shown at the time
+
+    
+
+
+
 var current_user = 1;
 var current_page = 1; // number of tickets open
 var tickets_pp = 1; // ticket shown at the time
@@ -260,6 +282,9 @@ function cuser() {
     getT(userID);
    
 }
+
+
+    
 
 
 var uid = null;    
