@@ -21,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sc.addEventListener("change", function() {
                 cuser(); // add event to the new input file
 
-                var page_span = document.getElementById("page");
-                current_page = 1;
-                page_span.innerHTML = current_page;
-
+               rpage();//reset page, navigation trouble tickets
 
             });
             getData();
@@ -40,11 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
       
  });
 
-//populate first trouble ticket of the first user
-async function getUser() {
-   
-    
+//reset page user trouble tickets
+function rpage() {
+    var page_span = document.getElementById("page");
+    current_page = 1;
+    page_span.innerHTML = current_page;
+    console.log('current page'+ current_page);
+    return current_page;
 }
+
+function gpage() {
+  return current_page -1  
+} 
 
 function getT(userID) {
 
@@ -54,7 +58,7 @@ function getT(userID) {
 //alert(userID);
     //userID = 50; 
 
-                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID+"?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
                             //defining the header
@@ -81,8 +85,10 @@ function getT(userID) {
                                             { userIT.set(userID,data[0]); }
                                             current_user = userID;
                                                 console.log(userIT.get(userID));
+                                                console.log('userID: '+userID);
                                                 console.log(userIT);
-                                                changePage(current_page);
+                                                
+                                                changePage(rpage());
 
                                            
                                                 
@@ -200,8 +206,10 @@ function closeT() {
     //h.append ('Content-Type', 'application/json');
     h.append ('authorization', localStorage.getItem('token'));
     //json required body = ftd
+    var tid = document.getElementById('tid').innerHTML;
+    console.log('Ticke Id to be remove is: '+ tid);
     let ftd = {
-        "ticket_id": document.getElementById('tid')
+        "ticket_id": tid
     }
     //post request object to the endpoint
    
@@ -218,7 +226,11 @@ function closeT() {
             //console.log('Status endpoint '+ data.status);
 
             if(data.status==="good"){ 
+                    var u = getUser();
+                    console.log('remove from Map: '+userIT.delete(u));
                     console.log('endpoint '+ data.message);
+                     console.log ('user no.: '+u);
+                      getT(u);
             }
             else if (data.status==="err" ){
                     alert(data.message);
@@ -283,6 +295,13 @@ function cuser() {
    
 }
 
+// return current user selected on the dropdowm menu
+function getUser() {
+    var val = document.getElementById("cust");
+    var userID = val.options[val.selectedIndex].value;
+    return userID;
+}
+
 
     
 
@@ -309,7 +328,7 @@ function changePage(page)
     //fill deatails about trouble ticket
   
     var currentTicket = userIT.get(current_user);
-    //console.log(currentTicket.info.tickets[page-1].ticket_id);
+    //console.log('tid= '+currentTicket.info.tickets[page-1].ticket_id + ' currentU' + current_user );
     ticket_details[0].innerHTML = currentTicket.info.tickets[page-1].ticket_id;
     ticket_details[1].innerHTML = currentTicket.info.tickets[page-1].issue;
     ticket_details[2].innerHTML = currentTicket.info.tickets[page-1].description;
