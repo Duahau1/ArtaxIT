@@ -30,11 +30,7 @@
         <h3>Closed Tickets</h3>
 
         <label class="dropdown_label" for="ticket_select">Select ticket:</label>
-            <select name="cars" class="dropdown" id="ticket_select">
-                <option value="ticket1">1</option>
-                <option value="ticket2">2</option>
-                <option value="ticket3">3</option>
-                <option value="ticket4">4</option>
+            <select name="cars" class="dropdown" id="cust">
             </select>
 
         <div id="overview-container">
@@ -43,14 +39,15 @@
                 <h4>Support Ticket Information</h4>
                 <p class="sub-header">Subject:</p>
                 <!-- ticket data = tid -->
-                    <p id="tid" class="info"></p> 
-                <p class="sub-header">Description:</p>
-                    <p id="tdescription" class="info info-desc"></p>
-                <p class="sub-header">Images:</p>
-                <!-- ticket picture = tip -->
-                    <div id="tip" class="info info-desc">
-                        <!-- populate with ticket images -->
-                    </div>
+                    <p hidden id="tid" class="ticket"></p>
+                    <p  id="issue" class="info ticket"></p> 
+                    <p class="sub-header">Description:</p>
+                    <p id="tdescription" class="info info-desc ticket"></p>
+                    <p class="sub-header">Screenshot:</p>
+                    <!-- ticket picture = tip -->
+                    <img id="tip" class="info info-desc ticket"onerror="brokenURL()" >
+                    <!-- populate with ticket images -->
+                    </img>
                     <!-- open ticket = openT() -->
                     <button class="info info-btn" id="open-ticket-btn" onclick=openT()>Re-open Ticket</button>
             </div>
@@ -58,19 +55,25 @@
             <div class="overview-item">
                 <h4>User Information</h4>
                 <p class="sub-header">Username:</p>
-                    <p class="info" id=""></p>
+                <p class="info custI" id="user"></p>
                 <p class="sub-header">Name:</p>
-                    <p class="info" id=""></p>
+                <p class="info custI" id="name"></p>
                 <p class="sub-header" >Phone:</p>
-                    <p class="info" id=""></p>
+                <p class="info custI" id="phone"></p>
                 <p class="sub-header">Email:</p>
-                    <p class="info" id=""></p>   
+                <p class="info custI" id="email"></p>    
                            
             </div>
 
         </div>
 
         <div class="footer">
+            <div id="pagination">
+                <button id="btn_prev">◄</button>
+                <span id="page">1</span>
+                <button id="btn_next">►</button>
+            </div>
+
             <a id="footer-link" href="https://www.ArtaxIT.com/">www.ArtaxIT.com</a>
         </div>
 

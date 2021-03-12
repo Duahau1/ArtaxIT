@@ -7,7 +7,6 @@ function logOut() {
 }
      
 
-
 document.addEventListener("DOMContentLoaded", function () {
    if (localStorage.getItem('token')) {
                  
@@ -20,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
             var sc = document.getElementById("cust");
             sc.addEventListener("change", function() {
                 cuser(); // add event to the new input file
+
+               rpage();//reset page, navigation trouble tickets
+
             });
             getData();
                                        
@@ -34,16 +36,28 @@ document.addEventListener("DOMContentLoaded", function () {
       
  });
 
-//populate first trouble ticket of the first user
-async function getUser() {
-   
-    
+//reset page user trouble tickets
+function rpage() {
+    var page_span = document.getElementById("page");
+    current_page = 1;
+    page_span.innerHTML = current_page;
+    console.log('current page'+ current_page);
+    return current_page;
 }
+
+function gpage() {
+  return current_page -1  
+} 
 
 function getT(userID) {
 
+
     //userID = 49; 
-                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
+
+//alert(userID);
+    //userID = 50; 
+
+                            let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID+"?status=close";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
                             //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
                             //defining the header
@@ -64,10 +78,20 @@ function getT(userID) {
                                    // console.log('Status endpoint '+ data.user_id);
                         
                                     if(data[0].user_id){ 
-                                            userIT.push(data[0]);
-                                                console.log(userIT.length);
+
+
+                                        if (!userIT.has(userID))
+                                            { userIT.set(userID,data[0]); }
+                                            current_user = userID;
+                                                console.log(userIT.get(userID));
+                                                console.log('userID: '+userID);
                                                 console.log(userIT);
                                                 
+                                                changePage(rpage());
+
+                                           
+                                                
+
                                             return userIT; // user_id , info [first_name, last_name,
                                                         // email, company_name, phone_number, plan_id ]
                                         //ticket[ticket_id, issue?, priority, description, status]                                            
@@ -112,9 +136,11 @@ function fillCustomers(u) {
 
 
  // variable to hold users 
- var user = new Array();
+
+let user = new Array();
 // variable to hold users Info and trouble tickets
-var userIT = new Array();
+var userIT = new Map();
+
 
 
 var userID =14;
@@ -125,7 +151,7 @@ var userID =14;
     //end point
     //all user with open trouble tickets
     //let endpoint = " https://mcval.herokuapp.com/admin/getuser_info/"+userID;
-    let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=open";
+    let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
     //let endpoint = " https://mcval.herokuapp.com/admin/getAll_Users?status=close";
     //defining the header
     let h = new Headers;
@@ -173,17 +199,19 @@ function closeT() {
 
     //end point
     //adm close trouble ticket
-    let endpoint = " https://mcval.herokuapp.com/admin/close_ticket";
+    let endpoint = " https://mcval.herokuapp.com/admin/reopen_ticket";
     //defining the header
     let h = new Headers;
-    //h.append ('Content-Type', 'application/json');
+    h.append ('Content-Type', 'application/json');
     h.append ('authorization', localStorage.getItem('token'));
     //json required body = ftd
+    var tid = Number( document.getElementById('tid').innerHTML);
+    console.log('Ticke Id to be remove is: '+ tid);
     let ftd = {
-        "ticket_id": document.getElementById('tid')
+        "ticket_id": tid
     }
     //post request object to the endpoint
-   
+   console.log(ftd);
     let req = new Request(endpoint,{
         method: 'POST',
         headers: h,
@@ -195,9 +223,13 @@ function closeT() {
     .then((res) => res.json())
         .then((data) =>{
             //console.log('Status endpoint '+ data.status);
-
+            console.log(data);
             if(data.status==="good"){ 
+                    var u = getUser();
+                    console.log('remove from Map: '+userIT.delete(u));
                     console.log('endpoint '+ data.message);
+                     console.log ('user no.: '+u);
+                      getT(u);
             }
             else if (data.status==="err" ){
                     alert(data.message);
@@ -218,31 +250,14 @@ function closeT() {
 var current_page = 0; // number of tickets open
 var tickets_pp = 1; // ticket shown at the time
 
-var objJson = [ //json user
-    { 'ticket_id': 0,
-      'issue' : 'not internet',
-      'description':'Network is fine, but it is just this pc',
-      'Image': 'null'  },
-    { 'ticket_id': 1,
-    'issue' : 'not moneyt',
-    'description':'pc not working',
-    'Image': 'null'},
-    {'ticket_id': 2,
-    'issue' : 'not internet',
-    'description':'Network is fine, but it is just this pc',
-    'Image': 'null'},
-    {'ticket_id': 3,
-    'issue' : 'not internet',
-    'description':'Network is fine, but it is just this pc',
-    'Image': 'null'},
-    {'ticket_id': 4,
-    'issue' : 'I am student',
-    'description':'I want a vacation to the bahamas',
-    'Image': 'null'}
-    
     
 
-]; 
+
+
+var current_user = 1;
+var current_page = 1; // number of tickets open
+var tickets_pp = 1; // ticket shown at the time
+
 
 //view to update
 // 0 -> ticket_id (id = tid)
@@ -279,13 +294,24 @@ function cuser() {
    
 }
 
+// return current user selected on the dropdowm menu
+function getUser() {
+    var val = document.getElementById("cust");
+    var userID = val.options[val.selectedIndex].value;
+    return userID;
+}
+
 
     
+
+
+var uid = null;    
 function changePage(page)
 {
     var btn_next = document.getElementById("btn_next");
     var btn_prev = document.getElementById("btn_prev");
     var ticket_details = document.getElementsByClassName("ticket");
+    var user_details = document.getElementsByClassName("custI");
     var page_span = document.getElementById("page");
     
 
@@ -298,15 +324,44 @@ function changePage(page)
     // if (page > 1) removeList(ticket_details);
 
 
-    //fill tags
-    console.log (ticket_details);
-    ticket_details[0].innerHTML = userIT[0].info.tickets[page-1].ticket_id;
-    console.log(userIT[0].info.tickets[page-1].ticket_id);
-    ticket_details[1].innerHTML = userIT[0].info.tickets[page-1].issue;
-    ticket_details[2].innerHTML = userIT[0].info.tickets[page-1].description;
-    //ticket_details[0].innerHTML = objJson[page - 1].Image;
-    
+    //fill deatails about trouble ticket
+  
+    var currentTicket = userIT.get(current_user);
+    //console.log('tid= '+currentTicket.info.tickets[page-1].ticket_id + ' currentU' + current_user );
+    ticket_details[0].innerHTML = currentTicket.info.tickets[page-1].ticket_id;
+    ticket_details[1].innerHTML = currentTicket.info.tickets[page-1].issue;
+    ticket_details[2].innerHTML = currentTicket.info.tickets[page-1].description;
+    var img = currentTicket.info.tickets[page-1].image_link;
+    if (img===null) 
+        {
+            ticket_details[3].setAttribute('alt', 'No URL available'); 
+            ticket_details[3].setAttribute('src', ''); 
+        }
+    else 
+        {   
+            if (!checkI(img)) {
+                ticket_details[3].setAttribute('src', img);
+                ticket_details[3].setAttribute('alt', 'broken URL');    
+            }
+            else {
 
+                ticket_details[3].setAttribute('alt', 'No screenshot available'); 
+                ticket_details[3].setAttribute('src', ''); 
+        
+            }
+            
+        }
+
+    //fill details about user info
+    var userInf = userIT.get(current_user);
+    if (uid != userInf.user_id  )
+        {
+            uid = userInf.user_id; 
+            user_details[0].innerHTML = userInf.info.company_name;
+            user_details[1].innerHTML = userInf.info.first_name + userInf.info.last_name;
+            user_details[2].innerHTML = userInf.info.phone_number;
+            user_details[3].innerHTML = userInf.info.email;
+        }
     
     page_span.innerHTML = page;
 
@@ -322,10 +377,29 @@ function changePage(page)
         btn_next.style.visibility = "visible";
     }
 }
+
+
+
+//handler for broken URL
+
+function brokenURL() {
+    console.log('URL retrieve is broken, something wrong on the server');
+} 
+
+
 //how many ticket user.length
 function numTickets()
 {
-   return 5;
-   // return userIT[0].info.tickets.length;
+   //return 5;
+    return userIT.get(current_user).info.tickets.length;
     
+}
+
+//check if the Image URl is good
+// return true | false
+function checkI(url) 
+{
+   var img = new Image();
+   img.src = url;
+   return img.height != 0;
 }
