@@ -203,16 +203,16 @@ function closeT() {
     let endpoint = " https://mcval.herokuapp.com/admin/close_ticket";
     //defining the header
     let h = new Headers;
-    //h.append ('Content-Type', 'application/json');
+    h.append ('Content-Type', 'application/json');
     h.append ('authorization', localStorage.getItem('token'));
     //json required body = ftd
-    var tid = document.getElementById('tid').innerHTML;
+    var tid = Number( document.getElementById('tid').innerHTML);
     console.log('Ticke Id to be remove is: '+ tid);
     let ftd = {
         "ticket_id": tid
     }
     //post request object to the endpoint
-   
+   console.log(ftd);
     let req = new Request(endpoint,{
         method: 'POST',
         headers: h,
@@ -224,7 +224,7 @@ function closeT() {
     .then((res) => res.json())
         .then((data) =>{
             //console.log('Status endpoint '+ data.status);
-
+            console.log(data);
             if(data.status==="good"){ 
                     var u = getUser();
                     console.log('remove from Map: '+userIT.delete(u));
@@ -332,7 +332,7 @@ function changePage(page)
     ticket_details[0].innerHTML = currentTicket.info.tickets[page-1].ticket_id;
     ticket_details[1].innerHTML = currentTicket.info.tickets[page-1].issue;
     ticket_details[2].innerHTML = currentTicket.info.tickets[page-1].description;
-    //ticket_details[0].innerHTML = .Image;
+    ticket_details[3].setAttribute('src',currentTicket.info.tickets[page-1].image_link);  
 
     //fill details about user info
     var userInf = userIT.get(current_user);
