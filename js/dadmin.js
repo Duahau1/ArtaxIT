@@ -333,6 +333,26 @@ function changePage(page)
     ticket_details[1].innerHTML = currentTicket.info.tickets[page-1].issue;
     ticket_details[2].innerHTML = currentTicket.info.tickets[page-1].description;
     ticket_details[3].setAttribute('src',currentTicket.info.tickets[page-1].image_link);  
+    var img = currentTicket.info.tickets[page-1].image_link;
+    if (img===null) 
+        {
+            ticket_details[3].setAttribute('alt', 'No URL available'); 
+            ticket_details[3].setAttribute('src', ''); 
+        }
+    else 
+        {   
+            if (!checkI(img)) {
+                ticket_details[3].setAttribute('src', img);
+                ticket_details[3].setAttribute('alt', 'broken URL');    
+            }
+            else {
+
+                ticket_details[3].setAttribute('alt', 'No screenshot available'); 
+                ticket_details[3].setAttribute('src', ''); 
+        
+            }
+            
+        }
 
     //fill details about user info
     var userInf = userIT.get(current_user);
@@ -359,10 +379,26 @@ function changePage(page)
         btn_next.style.visibility = "visible";
     }
 }
+
+//handler for broken URL
+
+function brokenURL() {
+    console.log('URL retrieve is broken, something wrong on the server');
+} 
+
+
 //how many ticket user.length
 function numTickets()
 {
    //return 5;
     return userIT.get(current_user).info.tickets.length;
     
+}
+//check if the Image URl is good
+// return true | false
+function checkI(url) 
+{
+   var img = new Image();
+   img.src = url;
+   return img.height != 0;
 }
