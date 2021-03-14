@@ -1,38 +1,99 @@
-// careBasic 
-document.getElementById("careBasic").addEventListener('click', () => {
-    //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1"
-    fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/1", {
+const url = "https://mcval.herokuapp.com/subscription/purchase";
+paypal
+  .Buttons({
+    style: {
+      shape: "pill",
+      color: "gold",
+      layout: "horizontal",
+      label: "subscribe",
+      tagline: false,
+    },
+    createSubscription: function (data, actions) {
+      return actions.subscription.create({
+        plan_id: "P-5BE31835A5336662JMBGVK6I",
+      });
+    },
+    onApprove: function (data, actions) {
+      let res = {
+        subscriptionID: data.subscriptionID,
+        planID: 3,
+        planName: "carePro",
+      };
+      fetch(url, {
         headers: {
-            'authorization': localStorage.getItem('token')
-        }
-    }).then(res => res.json()).then(res => window.location.href = res.url);
-})
+          "Content-Type": "application/json",
+          "authorization": localStorage.getItem("token"),
+        },
+        body: JSON.stringify(res),
+      })
+        .then((res) => res.json())
+        .then((value) => console.log(value));
+    },
+  })
+  .render("#carePro-button-container");
 
-// carePlus
-document.getElementById("carePlus").addEventListener('click', () => {
-    //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2"
-    fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/2", {
+paypal
+  .Buttons({
+    style: {
+      shape: "pill",
+      color: "gold",
+      layout: "horizontal",
+      label: "subscribe",
+      tagline: false,
+    },
+    createSubscription: function (data, actions) {
+      return actions.subscription.create({
+        plan_id: "P-5DN69227AH7284217MBGVIUY",
+      });
+    },
+    onApprove: function (data, actions) {
+      let res = {
+        subscriptionID: data.subscriptionID,
+        planID: 2,
+        planName: "carePlus",
+      };
+      fetch(url, {
         headers: {
-            'authorization': localStorage.getItem('token')
-        }
-    }).then(res => res.json()).then(res => window.location.href = res.url);
-})
+          "Content-Type": "application/json",
+          "authorization": localStorage.getItem("token"),
+        },
+        body: JSON.stringify(res),
+      })
+        .then((res) => res.json())
+        .then((value) => console.log(value));
+    },
+  })
+  .render("#carePlus-button-container");
 
-// carePro
-document.getElementById("carePro").addEventListener('click', () => {
-    //"https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3"
-    fetch("https://mcval.herokuapp.com/dashboard/subscription/createAgreement/3", {
+paypal
+  .Buttons({
+    style: {
+      shape: "pill",
+      color: "gold",
+      layout: "horizontal",
+      label: "subscribe",
+      tagline: false,
+    },
+    createSubscription: function (data, actions) {
+      return actions.subscription.create({
+        plan_id: "P-7MF19636042521849MBGVHTY",
+      });
+    },
+    onApprove: function (data, actions) {
+      let res = {
+        subscriptionID: data.subscriptionID,
+        planID: 1,
+        planName: "careBasic",
+      };
+      fetch(url, {
         headers: {
-            'authorization': localStorage.getItem('token')
-        }
-    }).then(res => res.json()).then(res => window.location.href = res.url);
-})
-
-document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem('token')) {
-        console.log('ready')
-    } else {
-        localStorage.clear();
-        window.location.href = "../index.html";
-    }
-});
+          "Content-Type": "application/json",
+          "authorization": localStorage.getItem("token"),
+        },
+        body: JSON.stringify(res),
+      })
+        .then((res) => res.json())
+        .then((value) => console.log(value));
+    },
+  })
+  .render("#careBasic-button-container");

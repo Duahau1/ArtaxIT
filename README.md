@@ -184,7 +184,7 @@ null
 </tr>
 
 <tr>
-<td>GET</td>
+<td>POST</td>
 <td>/dashboard/subscription/purchase</td>
 <td>:x:</td>
 <td>:x:</td>
@@ -206,7 +206,7 @@ null
 </tr>
 
 <tr>
-<td>GET</td>
+<td>POST</td>
 <td>/dashboard/subscription/cancel</td>
 <td>:x:</td>
 <td>:x:</td>
