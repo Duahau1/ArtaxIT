@@ -1,20 +1,36 @@
 // JS file for create_account.html
 
+// getting URL paramenter
+
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
 
 document.addEventListener("DOMContentLoaded", function(){
     // Handler when the DOM is fully loaded
-    // grap the values from LocalStorage
-    var fname = localStorage.getItem('fname');
-    var lname = localStorage.getItem('lname-input');
-    var phone = localStorage.getItem('phone-input');
-    var company = localStorage.getItem('company');
+    
 
     document.addEventListener('submit',e=>{
         e.preventDefault();
         const formInput = e.target;
+        // grap the values from LocalStorage
+        var fname = getParameterByName('fname');
+        var lname = getParameterByName('lname');
+        var phone = getParameterByName('phone');
+        var company = getParameterByName('company');
+        console.log (fname);
+        console.log (lname);
+        console.log (phone);
+        console.log (company);
         let inputField=[...formInput.querySelectorAll('input')]
         
-        let req= {
+        let req= { 
             // fname 
             "first_name":fname,
             // lname 
@@ -30,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(){
             //email 
             "email":inputField[0].value
         }
-        
+    
        fetch(formInput.action,{
             method:formInput.method,
             headers:{
@@ -51,5 +67,5 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         })
         .catch(err=>console.log(err));
-    })
+     })
 });

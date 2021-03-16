@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(){
+
     // Handler when the DOM is fully loaded
 
+    document.getElementById('continue-btn')
+    addEventListener('submit', store);
+
+
     function store(){
-        
+        e.preventDefault();
         //get info from the form
             var fname = document.getElementById("fname-input");
             var lname = document.getElementById("lname-input");
