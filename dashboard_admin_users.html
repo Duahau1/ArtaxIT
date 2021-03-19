@@ -20,62 +20,59 @@
     <div class="sidebar">
         <img id="hero-img" src="Images/logoartaxit-horizontal.png" alt="hero-img">
         <a class="menu-link" id="link1" href="dashboard_admin_open.html">Open Tickets</a>
-        <a class="menu-link active" href="dashboard_admin_closed.html">Closed Tickets</a>
-        <a class="menu-link" href="dashboard_admin_users.html">User Info</a>
+        <a class="menu-link" href="dashboard_admin_closed.html">Closed Tickets</a>
+        <a class="menu-link active" href="dashboard_admin_users.html">User Info</a>
         <a class="menu-link" id="logout-btn" href="https://www.ArtaxIT.com/" onclick="logOut()">Log Out</a>
         <button id="menu-btn" onclick="openMenu()">+</button>
     </div>
       
     <div class="content">
 
-        <h3>Closed Tickets</h3>
+        <h3>User Info</h3>
 
-        <label class="dropdown_label" for="ticket_select">Select ticket:</label>
-            <select name="cars" class="dropdown" id="cust">
+        <label class="dropdown_label" for="ticket_select">Select User:</label>
+            <select name="users" class="dropdown" id="">
+                
             </select>
 
         <div id="overview-container">
 
             <div class="overview-item">
-                <h4>Support Ticket Information</h4>
-                <p class="sub-header">Subject:</p>
-                <!-- ticket data = tid -->
-                    <p hidden id="tid" class="ticket"></p>
-                    <p  id="issue" class="info ticket"></p> 
-                    <p class="sub-header">Description:</p>
-                    <p id="tdescription" class="info info-desc ticket"></p>
-                    <p class="sub-header">Screenshot:</p>
-                    <!-- ticket picture = tip -->
-                    <img id="tip" class="info info-desc ticket"onerror="brokenURL()" >
-                    <!-- populate with ticket images -->
-                    </img>
-                    <!-- open ticket = openT() -->
-                    <!-- <button class="info info-btn" id="open-ticket-btn" onclick=openT()>Re-open Ticket</button> -->
+                <h4>User Info</h4>
+                <p class="sub-header">First Name:</p>
+                    <p class="info" name ="firstN" id="fname-info"></p>
+                <p class="sub-header">Last Name:</p>
+                    <p class="info" name="lastN" id="lname-info"></p>
+                <p class="sub-header">Email:</p>
+                    <p class="info" name="email" id="email-info"></p>
+                <p class="sub-header">Phone:</p>
+                    <p class="info" name="phone" id="phone-info"></p>
+                <p class="sub-header">Company:</p>
+                    <p class="info" name="company" id="company-info"></p>
             </div>
 
             <div class="overview-item">
-                <h4>User Information</h4>
-                <p class="sub-header">Username:</p>
-                <p class="info custI" id="user"></p>
-                <p class="sub-header">Name:</p>
-                <p class="info custI" id="name"></p>
-                <p class="sub-header" >Phone:</p>
-                <p class="info custI" id="phone"></p>
-                <p class="sub-header">Email:</p>
-                <p class="info custI" id="email"></p>    
-                           
+                <h4>Subscription</h4>
+                <p class="sub-header">Current plan:</p>
+                    <p class="info" id="c-plan"></p>
+                <p class="sub-header">Billing:</p>
+                    <p class="info" id="p-plan" ></p>
+                <p class="sub-header" >Next bill date:</p>
+                    <p class="info" id="n-billing" ></p>
+                <p class="sub-header">Benefits:</p>
+                    <ul id="plan_benefits"></ul>
             </div>
 
         </div>
 
         <div class="footer">
+
             <div id="pagination">
                 <button id="btn_prev">◄</button>
                 <span id="page">1</span>
                 <button id="btn_next">►</button>
             </div>
 
-            <a id="footer-link" href="https://www.ArtaxIT.com/">www.ArtaxIT.com</a>
         </div>
 
     </div>
@@ -142,7 +139,7 @@
 
     </script>
 
- <script src="js/dadminc.js"></script> 
+    <script src="js/dadmin.js"></script> 
 
 </body>
 
