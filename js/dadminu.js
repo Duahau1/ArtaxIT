@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
  });
 
 
+
 function gpage() {
   return current_page -1  
 } 
@@ -154,9 +155,6 @@ function nextPage()
 function pullPages() {
 
 
-
-{
-
     //end point
     //retrieve users pagination
     let endpoint = next;
@@ -229,7 +227,6 @@ function pullPages() {
      
  }
     
-}
 
 
 
@@ -321,6 +318,22 @@ function addListElement(list,element) {
         element.appendChild(child);
 
       }
+}
+
+
+function authenU() {
+
+    if (localStorage.getItem('token')) {
+                 
+    return true;                               
+        
+   } 
+    
+else {   
+
+    logOut();
+   }
+    
 }
 
 
