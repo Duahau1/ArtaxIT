@@ -93,8 +93,8 @@ function gpage() {
                 
                         //userPages.set(data.currentPage,data.users)
                         current_user = data.currentPage;
-                        total_users = data.totalPage * 2;
-                    
+                        total_users = data.totalPage ;
+                        total_users = total_users ;
                     
                     console.log(current_user);
                     changePage(current_user);
@@ -141,13 +141,19 @@ function nextPage()
 {
     if (current_page < total_users){
         current_page++;
+        console.log(total_users);
+        console.log(current_user);
+        if (current_page == total_users ) {
+            btn_next.style.visibility = "hidden";
+        }
         changePage(current_page);
-    }
-    if (current_page == 2 && user_next) {
+        if (current_page == 2 && user_next) {
         
-        pullPages(); // function to load next to users info to display
-
+            pullPages(); // function to load fetch endpoint for users info to display
+    
+        }
     }
+    
 }
 
 //get next page
@@ -228,8 +234,6 @@ function pullPages() {
  }
     
 
-
-
     
    
 function changePage(page)
@@ -270,26 +274,26 @@ console.log(listuser[page -1]);
     user_details[3].innerHTML = userPage.phone_number;
     user_details[4].innerHTML = userPage.company_name;
     //modified later [5]
-    user_details[6].innerHTML = userPage.email;
-    user_details[7].innerHTML = userPage.next_billing_day;
+    //user_details[6].innerHTML = userPage.email;
+    //user_details[7].innerHTML = userPage.next_billing_day;
     if (userPage.plan_id === "1")
     {
        var plan = "Care Basic";
         user_details[5].innerHTML = plan;
-        addListElement(careBasic_b,user_details[8]);
+        addListElement(careBasic_b,user_details[6]);
         
     }
     else if (userPage.plan_id === "2") 
     {
         var plan ="Care Plus";
         user_details[5].innerHTML = plan;
-        addListElement(carePlus_b,user_details[8]);
+        addListElement(carePlus_b,user_details[6]);
     }
     else    
     {
         var plan ="Care Pro";
         user_details[5].innerHTML = plan;
-        addListElement(carePro_b,user_details[8]);
+        addListElement(carePro_b,user_details[6]);
     }
     
     
@@ -301,7 +305,7 @@ console.log(listuser[page -1]);
         btn_prev.style.visibility = "visible";
     }
 
-    if (page == total_users) {
+    if (page == (total_users - 1 ) ) {
         btn_next.style.visibility = "hidden";
     } else {
         btn_next.style.visibility = "visible";
@@ -316,10 +320,8 @@ function addListElement(list,element) {
         child.dataset.name = list[i];
         child.setAttribute("class", "items_benefit");
         element.appendChild(child);
-
       }
 }
-
 
 function authenU() {
 
