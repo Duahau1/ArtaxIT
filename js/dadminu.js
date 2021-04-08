@@ -146,8 +146,10 @@ function nextPage()
         if (current_page == total_users ) {
             btn_next.style.visibility = "hidden";
         }
+        console.log(current_page);
+
         changePage(current_page);
-        if (current_page == 2 && user_next) {
+        if (current_page <= 2 && user_next) {
         
             pullPages(); // function to load fetch endpoint for users info to display
     
@@ -268,7 +270,9 @@ function changePage(page)
 console.log(listuser[page -1]);
     var userPage = userPages.get( listuser[page -1]);
     //console.log('tid= '+userPage.info.tickets[page-1].ticket_id + ' currentU' + current_user );
+    console.log(userPage.first_name);
     user_details[0].innerHTML = userPage.first_name;
+    
     user_details[1].innerHTML = userPage.last_name;
     user_details[2].innerHTML = userPage.email;
     user_details[3].innerHTML = userPage.phone_number;
