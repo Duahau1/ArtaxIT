@@ -141,15 +141,13 @@ function nextPage()
 {
     if (current_page < total_users){
         current_page++;
-        console.log(total_users);
-        console.log(current_user);
         if (current_page == total_users ) {
             btn_next.style.visibility = "hidden";
         }
         console.log(current_page);
 
         changePage(current_page);
-        if (current_page <= 2 && user_next) {
+        if (current_page % 2 == 0 && user_next) {
         
             pullPages(); // function to load fetch endpoint for users info to display
     
